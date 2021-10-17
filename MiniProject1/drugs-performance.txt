@@ -1,0 +1,159 @@
+FIRST RUN STATISTICS*****************************************************************************
+
+a) Gaussian Naive Baye's - Default parameters **************************************************
+b) Confusion Matrix
+4 0 0 0 0
+1 2 0 0 0
+0 0 4 0 0
+0 0 0 9 1
+3 0 2 0 14
+
+c) precision, recall, and F1 measure
+d) accuracy, macro average F1, and weight average F1 of model
+              precision    recall  f1-score   support
+
+       drugA       0.50      1.00      0.67         4
+       drugB       1.00      0.67      0.80         3
+       drugC       0.67      1.00      0.80         4
+       drugX       1.00      0.90      0.95        10
+       drugY       0.93      0.74      0.82        19
+
+    accuracy                           0.82        40
+   macro avg       0.82      0.86      0.81        40
+weighted avg       0.89      0.82      0.83        40
+
+a) Decision Tree - Default parameters **************************************************
+b) Confusion Matrix
+4 0 0 0 0
+1 2 0 0 0
+0 0 4 0 0
+0 0 0 10 0
+0 0 0 0 19
+
+c) precision, recall, and F1 measure
+d) accuracy, macro average F1, and weight average F1 of model
+              precision    recall  f1-score   support
+
+       drugA       0.80      1.00      0.89         4
+       drugB       1.00      0.67      0.80         3
+       drugC       1.00      1.00      1.00         4
+       drugX       1.00      1.00      1.00        10
+       drugY       1.00      1.00      1.00        19
+
+    accuracy                           0.97        40
+   macro avg       0.96      0.93      0.94        40
+weighted avg       0.98      0.97      0.97        40
+
+a) Top Decision Tree - Criterion: gini or entropy - Max Depth: 5 or 10 - min_samples_split: 2, 3, or 4
+b) Confusion Matrix
+4 0 0 0 0
+1 2 0 0 0
+0 0 4 0 0
+0 0 0 10 0
+0 0 0 0 19
+
+c) precision, recall, and F1 measure
+d) accuracy, macro average F1, and weight average F1 of model
+              precision    recall  f1-score   support
+
+       drugA       0.80      1.00      0.89         4
+       drugB       1.00      0.67      0.80         3
+       drugC       1.00      1.00      1.00         4
+       drugX       1.00      1.00      1.00        10
+       drugY       1.00      1.00      1.00        19
+
+    accuracy                           0.97        40
+   macro avg       0.96      0.93      0.94        40
+weighted avg       0.98      0.97      0.97        40
+
+Best parameters found:
+{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}
+
+a) Perceptron - Default parameters ********************************************************
+b) Confusion Matrix
+0 0 0 0 4
+0 2 0 0 1
+0 0 0 0 4
+0 2 0 0 8
+0 0 0 0 19
+
+c) precision, recall, and F1 measure
+d) accuracy, macro average F1, and weight average F1 of model
+              precision    recall  f1-score   support
+
+       drugA       0.00      0.00      0.00         4
+       drugB       0.50      0.67      0.57         3
+       drugC       0.00      0.00      0.00         4
+       drugX       0.00      0.00      0.00        10
+       drugY       0.53      1.00      0.69        19
+
+    accuracy                           0.53        40
+   macro avg       0.21      0.33      0.25        40
+weighted avg       0.29      0.53      0.37        40
+
+a) Multilayer Perceptron - Default parameters ********************************************************
+b) Confusion Matrix
+0 0 0 3 1
+0 0 0 3 0
+0 0 0 4 0
+0 0 0 8 2
+0 0 0 2 17
+
+c) precision, recall, and F1 measure
+d) accuracy, macro average F1, and weight average F1 of model
+              precision    recall  f1-score   support
+
+       drugA       0.00      0.00      0.00         4
+       drugB       0.00      0.00      0.00         3
+       drugC       0.00      0.00      0.00         4
+       drugX       0.40      0.80      0.53        10
+       drugY       0.85      0.89      0.87        19
+
+    accuracy                           0.62        40
+   macro avg       0.25      0.34      0.28        40
+weighted avg       0.50      0.62      0.55        40
+
+a) Top Multilayer Perceptron - Activation function: logistic, tanh, relu, or identity - Network architectures: (30, 50) or (10, 10, 10) - Solver: adam or sgd
+b) Confusion Matrix
+4 0 0 0 0
+1 2 0 0 0
+0 0 4 0 0
+0 0 0 10 0
+0 0 0 1 18
+
+c) precision, recall, and F1 measure
+d) accuracy, macro average F1, and weight average F1 of model
+              precision    recall  f1-score   support
+
+       drugA       0.80      1.00      0.89         4
+       drugB       1.00      0.67      0.80         3
+       drugC       1.00      1.00      1.00         4
+       drugX       0.91      1.00      0.95        10
+       drugY       1.00      0.95      0.97        19
+
+    accuracy                           0.95        40
+   macro avg       0.94      0.92      0.92        40
+weighted avg       0.96      0.95      0.95        40
+
+Best parameters found:
+{'activation': 'logistic', 'hidden_layer_sizes': (30, 50), 'max_iter': 10000, 'solver': 'adam'}
+**********************************************************************************************
+
+Average accuracy of models (GNB, Base-DT, Top-DT, PER, Base-MLP, Top-MLP):
+0.825, 0.9749999999999999, 0.9749999999999999, 0.5250000000000001, 0.6125, 0.9375000000000002
+
+Average macro-average of models (GNB, Base-DT, Top-DT, PER, Base-MLP, Top-MLP):
+0.8075128998968009, 0.937777777777778, 0.937777777777778, 0.2524675324675325, 0.27283170516055294, 0.90503254292728
+
+Average weighted-average of models (GNB, Base-DT, Top-DT, PER, Base-MLP, Top-MLP):
+0.83468524251806, 0.9738888888888889, 0.9738888888888889, 0.37103896103896095, 0.5320356445838994, 0.9400676915940075
+
+Standard Deviation of the accuracy of models (GNB, Base-DT, Top-DT, PER, Base-MLP, Top-MLP):
+0.0, 0.0, 0.0, 1.1102230246251565e-16, 0.012500000000000011, 0.012499999999999956
+
+Standard Deviation of the macro-average of models (GNB, Base-DT, Top-DT, PER, Base-MLP, Top-MLP):
+0.0, 2.220446049250313e-16, 2.220446049250313e-16, 0.0, 0.006993593171512371, 0.013975465029749265
+
+Standard Deviation of the weighted-average of models (GNB, Base-DT, Top-DT, PER, Base-MLP, Top-MLP):
+0.0, 0.0, 0.0, 5.551115123125783e-17, 0.012283232505304137, 0.009955375009513951
+

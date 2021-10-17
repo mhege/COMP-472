@@ -1,12 +1,11 @@
 import glob
 import math
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.datasets import load_files
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, f1_score
+from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import TfidfTransformer
@@ -50,6 +49,7 @@ if __name__ == '__main__':
     # 5)
     train_x, test_x, train_y, test_y = \
         train_test_split(dataset_counts, dataset.target, test_size=0.2, random_state=None)
+    print(dataset.target)
 
     # 6)
     # Use frequencies rather than counts to train NB
