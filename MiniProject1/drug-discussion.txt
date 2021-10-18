@@ -1,0 +1,14 @@
+8) Discussion
+
+Looking at the standard deviation of the accuracy, macro-average, and weighted-average,
+the models that changed metric values in successive runs are: Base-MLP, Top-MLP.
+The models that remained the same are: GNB, Base-DT, Top-DT, PER.
+
+The multilayer perceptron changes results due to randomly assigning weights. Therefore,
+it converges to different metric results each time.
+
+Since the perceptron doesn't change results, it must be initialized with the same weights.
+The gaussian naive baye's and decision tree models always converge to the same result fundamentally.
+
+
+

@@ -1,0 +1,15 @@
+11)
+
+a) When looking at the distribution of the instances in each class (Business, Entertainment, Politics, Sport, and Tech),
+there's a maximum variation of 125 text files between Entertainment and Sport. That's approximately a 32% difference,
+from 386 to 511, respectively. Therefore, we are dealing with a dataset that is uneven. Accuracy as a metric works
+best when the distribution is even, specifically when true positives and true negatives are dominant. 
+Whereas, the F1 measure works best on distributions that have variations, specifically when false positives and false
+negatives are more relevant. 
+
+b) The difference between questions 7) 9) and 10) are the smoothing values used in the Naive Baye's model. Smoothing
+helps in putting a greater than zero probability to words in the training set that might appear in the test set. For
+large datasets, smoothing regularizes the data and returns better results in terms of metrics. The smoothing values
+used are 1.0, 0.0001, and 0.9 for 7), 9), and 10), respectively. In bbc-performance, we see that using a small value
+(.0001) has better results than greater values (.9 and 1). 1 and .9 gave too much significance to words that didn't
+appear in the training set versus .0001, as such it reduced the metric results.  
