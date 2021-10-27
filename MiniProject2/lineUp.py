@@ -1,5 +1,9 @@
 # based on code from https://stackabuse.com/minimax-and-alpha-beta-pruning-in-python
 
+# Work to be done:
+# Input valid game parameters.
+# Change tic tac toe to represent values.
+# Make the e1 heuristic to verify work.
 
 import time
 
@@ -10,16 +14,117 @@ class Game:
     AI = 3
 
     def __init__(self, recommend = True):
+        self.input()
         self.initialize_game()
         self.recommend = recommend
 
+    def input(self):
+
+        # Initialize values for input verification
+        board_check = True
+        bloc_check = True
+        self.bloc_posi = []
+        bloc_posi_count = 0
+        line_check = True
+        depth_check = True
+        time_check = True
+        algo_check = True
+        playmode_check = True
+
+        # Get input for the size of the board
+        while board_check:
+            self.board_size = int(input("Enter the board size n: "))
+            if self.board_size not in range(11):
+                print("Enter a value between 0 and 10 inclusive")
+            else:
+                board_check = False
+
+        # Get input for the number of blocs on the board
+        while bloc_check:
+            self.num_blocs = int(input("Enter the number of blocs on the board b: "))
+            if self.num_blocs not in range(2*self.board_size + 1):
+                print("Enter a value between 0 and " + str(2*self.board_size) + " inclusive")
+            else:
+                bloc_check = False
+
+        # Get unique bloc positions for the number of blocs
+        while bloc_posi_count != self.num_blocs:
+            x_posi = int(input("Enter the column the bloc will go: "))
+            y_posi = int(input("Enter the row the bloc will go: "))
+            valid_posi = True
+            if x_posi not in range(self.board_size + 1) or y_posi not in range(self.board_size + 1):
+                print("Enter a valid location on the board")
+            else:
+                if self.bloc_posi:
+                    for i, val in enumerate(self.bloc_posi):
+                        if self.bloc_posi[i][0] == x_posi and self.bloc_posi[i][1] == y_posi:
+                            print("This position has already been entered")
+                            valid_posi = False
+                            break
+                    if valid_posi:
+                        self.bloc_posi.append([x_posi, y_posi])
+                        bloc_posi_count += 1
+                    valid_posi = True
+                else:
+                    self.bloc_posi.append([x_posi, y_posi])
+                    bloc_posi_count += 1
+
+        # Get winning line size
+        while line_check:
+            self.line_size = int(input("Enter the winning line size: "))
+            if self.line_size not in range(3, self.board_size+1):
+                print("Enter a value between 3 and " + str(self.board_size) + " inclusive")
+            else:
+                line_check = False
+
+        # Get max depth of adversarial search for both players
+        while depth_check:
+            depthP1 = int(input("Enter the max depth of the adversarial search for player 1: "))
+            depthP2 = int(input("Enter the max depth of the adversarial search for player 2: "))
+            if depthP1 <= 0 or depthP2 <= 0:
+                print("Enter values that are positive and nonzero for both depths")
+            else:
+                depth_check = False
+                self.max_depth = [depthP1, depthP2]
+
+        # Get maximum amount of time the adversarial search can run if the player is an AI
+        while time_check:
+            self.max_AI_time = float(input("Enter the maximum amount of time the AI can think: "))
+            if self.max_AI_time <= 0:
+                print("Enter a positive non zero value")
+            else:
+                time_check = False
+
+        # Get Algorithm to run
+        while algo_check:
+            self.algo = int(input("Enter either 1 (True) for Alphabeta or 0 (False) for Minimax: "))
+            if self.algo not in range(2):
+                print("Enter either 0 or 1")
+            else:
+                algo_check = False
+
+        # Get play mode. Let 0: H-H, 1:H-AI, 2:AI-H, 3:AI-AI
+        while playmode_check:
+            self.play_mode = int(input("Enter the play mode (0: H-H, 1:H-AI, 2:AI-H, 3:AI-AI): "))
+            if self.play_mode not in range(4):
+                print("Enter a value that represents a valid play mode")
+            else:
+                playmode_check = False
+
     def initialize_game(self):
-        self.current_state = [['.' ,'.' ,'.'],
-                              ['.' ,'.' ,'.'],
-                              ['.' ,'.' ,'.']]
+
+        self.current_state = []
+
+        for i in range(self.board_size):
+            temp_row = [] # Generates new variable address
+            for j in range(self.board_size):
+                temp_row.append('.')
+            self.current_state.append(temp_row)
+
         # Player X always plays first
         self.player_turn = 'X'
 
+    # Draw board must be changed so that it is in reference to the board size entered
     def draw_board(self):
         print()
         for y in range(0, 3):
@@ -28,6 +133,8 @@ class Game:
             print()
         print()
 
+    # Change is valid so that px and py are in reference to the board size entered
+    # Have an else if for the possibility of there being a bloc on the space
     def is_valid(self, px, py):
         if px < 0 or px > 2 or py < 0 or py > 2:
             return False
@@ -36,6 +143,8 @@ class Game:
         else:
             return True
 
+    # Is end must be completely reworked in reference to board size input
+    # Win condition must be made in reference to input line size
     def is_end(self):
         # Vertical win
         for i in range(0, 3):
@@ -68,6 +177,7 @@ class Game:
         # It's a tie!
         return '.'
 
+    # This is fine for now
     def check_end(self):
         self.result = self.is_end()
         # Printing the appropriate message if the game has ended
@@ -81,6 +191,7 @@ class Game:
             self.initialize_game()
         return self.result
 
+    # This is fine for now
     def input_move(self):
         while True:
             print(F'Player {self.player_turn}, enter your move:')
@@ -91,6 +202,7 @@ class Game:
             else:
                 print('The move is not valid! Try again.')
 
+    # THis is fine for now
     def switch_player(self):
         if self.player_turn == 'X':
             self.player_turn = 'O'
@@ -98,6 +210,8 @@ class Game:
             self.player_turn = 'X'
         return self.player_turn
 
+    # Must be changed in reference to board size
+    # Must include the presence of blocs
     def minimax(self, max=False):
         # Minimizing for 'X' and maximizing for 'O'
         # Possible values are:
@@ -137,6 +251,8 @@ class Game:
                     self.current_state[i][j] = '.'
         return value, x, y
 
+    # Must be changed in reference to board size
+    # Must include the presence of blocs
     def alphabeta(self, alpha=-2, beta=2, max=False):
         # Minimizing for 'X' and maximizing for 'O'
         # Possible values are:
@@ -186,6 +302,7 @@ class Game:
                             beta = value
         return value, x, y
 
+    # That's fine for now?
     def play(self ,algo=None ,player_x=None ,player_o=None):
         if algo is None:
             algo = self.ALPHABETA
