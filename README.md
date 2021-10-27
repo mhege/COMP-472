@@ -26,17 +26,17 @@ Run task2.py as is, it will generate drugs-performance.txt and drug-distribution
 Discussion files:<br />
 bbc-discussion and drug-discussion were written apart and are not found in the .py files.<br />
 
-<b>MiniProject 2</b>
+<b>MiniProject 2</b><br />
 
-Students: 
-Marc Hegedus - 26242219
+Students: <br />
+Marc Hegedus - 26242219<br />
 Lorenzo Monge
 
-Software used:
-Pycharm 2021.2.2
-SourceTree 3.4.5
-Python 3.7.9
-pypy 3.7
+Software used:<br />
+Pycharm 2021.2.2<br />
+SourceTree 3.4.5<br />
+Python 3.7.9<br />
+pypy 3.7<br />
 
-Run instructions:
+Run instructions:<br />
 
