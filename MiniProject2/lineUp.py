@@ -12,8 +12,10 @@ class Game:
     ALPHABETA = 1
     HUMAN = 2
     AI = 3
+    colLabels = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7, "I": 8, "J": 9}
 
     def __init__(self, recommend = True):
+
         self.input()
         self.initialize_game()
         self.recommend = recommend
@@ -49,25 +51,29 @@ class Game:
 
         # Get unique bloc positions for the number of blocs
         while bloc_posi_count != self.num_blocs:
-            x_posi = int(input("Enter the column the bloc will go: "))
+            x_posi = input("Enter the column the bloc will go: ")
             y_posi = int(input("Enter the row the bloc will go: "))
             valid_posi = True
-            if x_posi not in range(self.board_size + 1) or y_posi not in range(self.board_size + 1):
-                print("Enter a valid location on the board")
-            else:
-                if self.bloc_posi:
-                    for i, val in enumerate(self.bloc_posi):
-                        if self.bloc_posi[i][0] == x_posi and self.bloc_posi[i][1] == y_posi:
-                            print("This position has already been entered")
-                            valid_posi = False
-                            break
-                    if valid_posi:
+            if x_posi in self.colLabels:
+                x_posi = self.colLabels[x_posi]
+                if x_posi not in range(self.board_size + 1) or y_posi not in range(self.board_size + 1):
+                    print("Enter a valid location on the board")
+                else:
+                    if self.bloc_posi:
+                        for i, val in enumerate(self.bloc_posi):
+                            if self.bloc_posi[i][0] == x_posi and self.bloc_posi[i][1] == y_posi:
+                                print("This position has already been entered")
+                                valid_posi = False
+                                break
+                        if valid_posi:
+                            self.bloc_posi.append([x_posi, y_posi])
+                            bloc_posi_count += 1
+                        valid_posi = True
+                    else:
                         self.bloc_posi.append([x_posi, y_posi])
                         bloc_posi_count += 1
-                    valid_posi = True
-                else:
-                    self.bloc_posi.append([x_posi, y_posi])
-                    bloc_posi_count += 1
+            else:
+                print("Enter a correct column indicator")
 
         # Get winning line size
         while line_check:
