@@ -26,6 +26,8 @@ Run task2.py as is, it will generate drugs-performance.txt and drug-distribution
 Discussion files:<br />
 bbc-discussion and drug-discussion were written apart and are not found in the .py files.<br />
 
+15/11/2021
+
 <b>MiniProject 2</b><br />
 
 Students: <br />
