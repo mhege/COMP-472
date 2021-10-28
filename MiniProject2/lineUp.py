@@ -36,8 +36,8 @@ class Game:
         # Get input for the size of the board
         while board_check:
             self.board_size = int(input("Enter the board size n: "))
-            if self.board_size not in range(11):
-                print("Enter a value between 0 and 10 inclusive")
+            if self.board_size not in range(3, 11):
+                print("Enter a value between 3 and 10 inclusive")
             else:
                 board_check = False
 
@@ -130,60 +130,87 @@ class Game:
         # Player X always plays first
         self.player_turn = 'X'
 
-    # Draw board must be changed so that it is in reference to the board size entered
     def draw_board(self):
         print()
-        for y in range(0, 3):
-            for x in range(0, 3):
+        for y in range(self.board_size):
+            for x in range(self.board_size):
                 print(F'{self.current_state[x][y]}', end="")
             print()
         print()
 
-    # Change is valid so that px and py are in reference to the board size entered
-    # Have an else if for the possibility of there being a bloc on the space
+    # Has to account for column labels
     def is_valid(self, px, py):
-        if px < 0 or px > 2 or py < 0 or py > 2:
+        if px not in range(self.board_size) or py not in range(self.board_size):
             return False
         elif self.current_state[px][py] != '.':
             return False
         else:
             return True
 
-    # Is end must be completely reworked in reference to board size input
-    # Win condition must be made in reference to input line size
     def is_end(self):
+
         # Vertical win
-        for i in range(0, 3):
-            if (self.current_state[0][i] != '.' and
-                    self.current_state[0][i] == self.current_state[1][i] and
-                    self.current_state[1][i] == self.current_state[2][i]):
-                return self.current_state[0][i]
+        for i in range(self.board_size):
+            lineWin = 0
+            for j in range(self.board_size - 1):
+                if self.current_state[j][i] == '.' or self.current_state[j][i] == '*' \
+                        or self.current_state[j][i] != self.current_state[j + 1][i]:
+                    lineWin = 0
+                else:
+                    lineWin += 1
+
+                if lineWin == self.line_size-1:
+                    return self.current_state[j][i]
+
         # Horizontal win
-        for i in range(0, 3):
-            if self.current_state[i] == ['X', 'X', 'X']:
-                return 'X'
-            elif self.current_state[i] == ['O', 'O', 'O']:
-                return 'O'
+        for j in range(self.board_size):
+            lineWin = 0
+            for i in range(self.board_size - 1):
+                if self.current_state[j][i] == '.' or self.current_state[j][i] == '*' \
+                        or self.current_state[j][i] != self.current_state[j][i + 1]:
+                    lineWin = 0
+                else:
+                    lineWin += 1
+
+                if lineWin == self.line_size-1:
+                    return self.current_state[j][i]
+
         # Main diagonal win
-        if (self.current_state[0][0] != '.' and
-                self.current_state[0][0] == self.current_state[1][1] and
-                self.current_state[0][0] == self.current_state[2][2]):
-            return self.current_state[0][0]
+        lineWin = 0
+        for i in range(self.board_size - 1):
+            if self.current_state[i][i] == '.' or self.current_state[i][i] == '*' \
+                    or self.current_state[i][i] != self.current_state[i + 1][i + 1]:
+                lineWin = 0
+            else:
+                lineWin += 1
+
+            if lineWin == self.line_size-1:
+                return self.current_state[i][i]
+
         # Second diagonal win
-        if (self.current_state[0][2] != '.' and
-                self.current_state[0][2] == self.current_state[1][1] and
-                self.current_state[0][2] == self.current_state[2][0]):
-            return self.current_state[0][2]
+        lineWin = 0
+        for i in range(self.board_size - 1):
+            if self.current_state[i][self.board_size - 1 - i] == '.' \
+                or self.current_state[i][self.board_size - 1 - i] == '*' \
+                    or self.current_state[i][self.board_size - 1 - i] \
+                    != self.current_state[i + 1][self.board_size - 1 - (i + 1)]:
+                lineWin = 0
+            else:
+                lineWin += 1
+
+            if lineWin == self.line_size-1:
+                return self.current_state[i][self.board_size - 1 - i]
+
         # Is whole board full?
-        for i in range(0, 3):
-            for j in range(0, 3):
+        for i in range(self.board_size):
+            for j in range(self.board_size):
                 # There's an empty field, we continue the game
                 if self.current_state[i][j] == '.':
                     return None
         # It's a tie!
         return '.'
 
-    # This is fine for now
+    # Has to account for column labels
     def check_end(self):
         self.result = self.is_end()
         # Printing the appropriate message if the game has ended
@@ -197,7 +224,7 @@ class Game:
             self.initialize_game()
         return self.result
 
-    # This is fine for now
+    # Has to account for column labels
     def input_move(self):
         while True:
             print(F'Player {self.player_turn}, enter your move:')
@@ -208,7 +235,7 @@ class Game:
             else:
                 print('The move is not valid! Try again.')
 
-    # THis is fine for now
+    # This is fine for now
     def switch_player(self):
         if self.player_turn == 'X':
             self.player_turn = 'O'
