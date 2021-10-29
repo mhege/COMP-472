@@ -127,6 +127,9 @@ class Game:
                 temp_row.append('.')
             self.current_state.append(temp_row)
 
+        for val in self.bloc_posi:
+            self.current_state[val[0]][val[1]] = '*'
+
         # Player X always plays first
         self.player_turn = 'X'
 
@@ -176,30 +179,66 @@ class Game:
                     return self.current_state[j][i]
 
         # Main diagonal win
-        lineWin = 0
-        for i in range(self.board_size - 1):
-            if self.current_state[i][i] == '.' or self.current_state[i][i] == '*' \
-                    or self.current_state[i][i] != self.current_state[i + 1][i + 1]:
-                lineWin = 0
-            else:
-                lineWin += 1
+        # Takes into account off-diagonals (Top half left to right)
+        for j in range((self.board_size + 1)-self.line_size):
+            lineWin = 0
+            for i in range(self.board_size - 1 - j):
+                if self.current_state[i][i+j] == '.' or self.current_state[i][i+j] == '*' \
+                        or self.current_state[i][i+j] != self.current_state[i + 1][i + j + 1]:
+                    lineWin = 0
+                else:
+                    lineWin += 1
 
-            if lineWin == self.line_size-1:
-                return self.current_state[i][i]
+                if lineWin == self.line_size-1:
+                    return self.current_state[i][i+j]
 
         # Second diagonal win
-        lineWin = 0
-        for i in range(self.board_size - 1):
-            if self.current_state[i][self.board_size - 1 - i] == '.' \
-                or self.current_state[i][self.board_size - 1 - i] == '*' \
-                    or self.current_state[i][self.board_size - 1 - i] \
-                    != self.current_state[i + 1][self.board_size - 1 - (i + 1)]:
-                lineWin = 0
-            else:
-                lineWin += 1
+        # Takes into account off-diagonals (Top half right to left)
+        for j in range((self.board_size+1)-self.line_size):
+            lineWin = 0
+            for i in range(self.board_size - 1 - j):
+                if self.current_state[i][self.board_size - 1 - i - j] == '.' \
+                    or self.current_state[i][self.board_size - 1 - i - j] == '*' \
+                        or self.current_state[i][self.board_size - 1 - i - j] \
+                        != self.current_state[i + 1][self.board_size - 1 - (i + 1) - j]:
+                    lineWin = 0
+                else:
+                    lineWin += 1
 
-            if lineWin == self.line_size-1:
-                return self.current_state[i][self.board_size - 1 - i]
+                if lineWin == self.line_size-1:
+                    return self.current_state[i][self.board_size - 1 - i - j]
+
+        # Need to account for off-diagonals for board size > line size
+        if self.board_size > self.line_size:
+
+            # Off-diagonal left side
+            # Excludes main diagonal
+            for j in range(self.board_size-self.line_size):
+                lineWin = 0
+                for i in range(self.board_size - 2 - j):
+                    if self.current_state[i + j + 1][i] == '.' or self.current_state[i + j + 1][i] == '*' \
+                            or self.current_state[i + j + 1][i] != self.current_state[i + j + 2][i + 1]:
+                        lineWin = 0
+                    else:
+                        lineWin += 1
+
+                    if lineWin == self.line_size-1:
+                        return self.current_state[i + j + 1][i]
+
+            # Off-diagonal right side
+            # Excludes second diagonal
+            for j in range(self.board_size-self.line_size):
+                lineWin = 0
+                for i in range(self.board_size - 2 - j):
+                    if self.current_state[i + j + 1][self.board_size - 1 - i] == '.' \
+                            or self.current_state[i + j + 1][self.board_size - 1 - i] == '*' \
+                            or self.current_state[i + j + 1][self.board_size - 1 - i] != self.current_state[i + j + 2][self.board_size - 1 - (i + 1)]:
+                        lineWin = 0
+                    else:
+                        lineWin += 1
+
+                    if lineWin == self.line_size-1:
+                        return self.current_state[i + j + 1][self.board_size - 1 - i]
 
         # Is whole board full?
         for i in range(self.board_size):
@@ -264,8 +303,8 @@ class Game:
             return 1, x, y
         elif result == '.':
             return 0, x, y
-        for i in range(0, 3):
-            for j in range(0, 3):
+        for i in range(self.board_size):
+            for j in range(self.board_size):
                 if self.current_state[i][j] == '.':
                     if max:
                         self.current_state[i][j] = 'O'
@@ -305,8 +344,8 @@ class Game:
             return 1, x, y
         elif result == '.':
             return 0, x, y
-        for i in range(0, 3):
-            for j in range(0, 3):
+        for i in range(self.board_size):
+            for j in range(self.board_size):
                 if self.current_state[i][j] == '.':
                     if max:
                         self.current_state[i][j] = 'O'
