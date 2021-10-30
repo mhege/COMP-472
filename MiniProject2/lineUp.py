@@ -140,6 +140,7 @@ class Game:
                 print(F'{self.current_state[x][y]}', end="")
             print()
         print()
+        self.e1()
 
     # Has to account for column labels
     def is_valid(self, px, py):
@@ -149,6 +150,181 @@ class Game:
             return False
         else:
             return True
+
+    def e1(self):
+        openingsX = 0
+        openingsO = 0
+
+        # Vertical opening
+        for i in range(self.board_size):
+            checkX = 0
+            checkO = 0
+            boolX = True
+            boolO = True
+            for j in range(self.board_size):
+
+                if (self.current_state[j][i] == '.' or self.current_state[j][i] == 'X') and boolX:
+                    checkX += 1
+                else:
+                    checkX = 0
+
+                if (self.current_state[j][i] == '.' or self.current_state[j][i] == 'O') and boolO:
+                    checkO += 1
+                else:
+                    checkO = 0
+
+                if checkX == self.line_size:
+                    boolX = False
+                    openingsX += 1
+
+                if checkO == self.line_size:
+                    boolO = False
+                    openingsO += 1
+
+        # Horizontal opening
+        for j in range(self.board_size):
+            checkX = 0
+            checkO = 0
+            boolX = True
+            boolO = True
+            for i in range(self.board_size):
+
+                if (self.current_state[j][i] == '.' or self.current_state[j][i] == 'X') and boolX:
+                    checkX += 1
+                else:
+                    checkX = 0
+
+                if (self.current_state[j][i] == '.' or self.current_state[j][i] == 'O') and boolO:
+                    checkO += 1
+                else:
+                    checkO = 0
+
+                if checkX == self.line_size:
+                    boolX = False
+                    openingsX += 1
+
+                if checkO == self.line_size:
+                    boolO = False
+                    openingsO += 1
+
+        # Main diagonal
+        # Takes into account off-diagonals (Top half left to right)
+        for j in range((self.board_size + 1)-self.line_size):
+            checkX = 0
+            checkO = 0
+            boolX = True
+            boolO = True
+            for i in range(self.board_size - j):
+
+                if (self.current_state[i][i+j] == '.' or self.current_state[i][i+j] == 'X') and boolX:
+                    checkX += 1
+                else:
+                    checkX = 0
+
+                if (self.current_state[i][i+j] == '.' or self.current_state[i][i+j] == 'O') and boolO:
+                    checkO += 1
+                else:
+                    checkO = 0
+
+                if checkX == self.line_size:
+                    boolX = False
+                    openingsX += 1
+
+                if checkO == self.line_size:
+                    boolO = False
+                    openingsO += 1
+
+        # Second diagonal
+        # Takes into account off-diagonals (Top half right to left)
+        for j in range((self.board_size+1)-self.line_size):
+            checkX = 0
+            checkO = 0
+            boolX = True
+            boolO = True
+            for i in range(self.board_size - j):
+
+                if (self.current_state[i][self.board_size - 1 - i - j] == '.' \
+                    or self.current_state[i][self.board_size - 1 - i - j] == 'X') and boolX:
+                    checkX += 1
+                else:
+                    checkX = 0
+
+                if (self.current_state[i][self.board_size - 1 - i - j] == '.' \
+                    or self.current_state[i][self.board_size - 1 - i - j] == 'O') and boolO:
+                    checkO += 1
+                else:
+                    checkO = 0
+
+                if checkX == self.line_size:
+                    boolX = False
+                    openingsX += 1
+
+                if checkO == self.line_size:
+                    boolO = False
+                    openingsO += 1
+
+        # Need to account for off-diagonals for board size > line size
+        if self.board_size > self.line_size:
+
+            # Off-diagonal left side
+            # Excludes main diagonal
+            for j in range(self.board_size - self.line_size):
+                checkX = 0
+                checkO = 0
+                boolX = True
+                boolO = True
+                for i in range(self.board_size - 1 - j):
+
+                    if (self.current_state[i + j + 1][i] == '.' or self.current_state[i + j + 1][i] == 'X') and boolX:
+                        checkX += 1
+                    else:
+                        checkX = 0
+
+                    if (self.current_state[i + j + 1][i] == '.' or self.current_state[i + j + 1][i] == 'O') and boolO:
+                        checkO += 1
+                    else:
+                        checkO = 0
+
+                    if checkX == self.line_size:
+                        boolX = False
+                        openingsX += 1
+
+                    if checkO == self.line_size:
+                        boolO = False
+                        openingsO += 1
+
+            # Off-diagonal right side
+            # Excludes second diagonal
+            for j in range(self.board_size - self.line_size):
+                checkX = 0
+                checkO = 0
+                boolX = True
+                boolO = True
+                for i in range(self.board_size - 1 - j):
+
+                    if self.current_state[i + j + 1][self.board_size - 1 - i] == '.' \
+                            or self.current_state[i + j + 1][self.board_size - 1 - i] == 'X' and boolX:
+                        checkX += 1
+                    else:
+                        checkX = 0
+
+                    if self.current_state[i + j + 1][self.board_size - 1 - i] == '.' \
+                            or self.current_state[i + j + 1][self.board_size - 1 - i] == 'O' and boolO:
+                        checkO += 1
+                    else:
+                        checkO = 0
+
+                    if checkX == self.line_size:
+                        boolX = False
+                        openingsX += 1
+
+                    if checkO == self.line_size:
+                        boolO = False
+                        openingsO += 1
+
+        print(openingsX)
+        print(openingsO)
+        return openingsX - openingsO
 
     def is_end(self):
 
