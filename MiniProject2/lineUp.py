@@ -1,9 +1,11 @@
 # based on code from https://stackabuse.com/minimax-and-alpha-beta-pruning-in-python
 
-# Work to be done:
-# Input valid game parameters.
-# Change tic tac toe to represent values.
-# Make the e1 heuristic to verify work.
+# Work to be done for input:
+# e1 is coded and check, needs to be worked into MINIMAX and ALPHABETA code
+# Work in the max depth into MINIMAX and ALPHABETA
+# Work in max time into MINIMAX and ALPHABETA
+# Work in the column labels into move input. Bloc positions already use proper column labels
+# Check illegal AI moves and end game?
 
 import time
 
@@ -12,6 +14,10 @@ class Game:
     ALPHABETA = 1
     HUMAN = 2
     AI = 3
+    HH = 0
+    HA = 1
+    AH = 2
+    AA = 3
     colLabels = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7, "I": 8, "J": 9}
 
     def __init__(self, recommend = True):
@@ -103,8 +109,8 @@ class Game:
 
         # Get Algorithm to run
         while algo_check:
-            self.algo = int(input("Enter either 1 (True) for Alphabeta or 0 (False) for Minimax: "))
-            if self.algo not in range(2):
+            self.algorithm = int(input("Enter either 1 (True) for Alphabeta or 0 (False) for Minimax: "))
+            if self.algorithm not in range(2):
                 print("Enter either 0 or 1")
             else:
                 algo_check = False
@@ -243,13 +249,13 @@ class Game:
             boolO = True
             for i in range(self.board_size - j):
 
-                if (self.current_state[i][self.board_size - 1 - i - j] == '.' \
+                if (self.current_state[i][self.board_size - 1 - i - j] == '.'
                     or self.current_state[i][self.board_size - 1 - i - j] == 'X') and boolX:
                     checkX += 1
                 else:
                     checkX = 0
 
-                if (self.current_state[i][self.board_size - 1 - i - j] == '.' \
+                if (self.current_state[i][self.board_size - 1 - i - j] == '.'
                     or self.current_state[i][self.board_size - 1 - i - j] == 'O') and boolO:
                     checkO += 1
                 else:
@@ -450,7 +456,7 @@ class Game:
             else:
                 print('The move is not valid! Try again.')
 
-    # This is fine for now
+
     def switch_player(self):
         if self.player_turn == 'X':
             self.player_turn = 'O'
@@ -458,8 +464,7 @@ class Game:
             self.player_turn = 'X'
         return self.player_turn
 
-    # Must be changed in reference to board size
-    # Must include the presence of blocs
+
     def minimax(self, max=False):
         # Minimizing for 'X' and maximizing for 'O'
         # Possible values are:
@@ -499,8 +504,7 @@ class Game:
                     self.current_state[i][j] = '.'
         return value, x, y
 
-    # Must be changed in reference to board size
-    # Must include the presence of blocs
+
     def alphabeta(self, alpha=-2, beta=2, max=False):
         # Minimizing for 'X' and maximizing for 'O'
         # Possible values are:
@@ -550,7 +554,7 @@ class Game:
                             beta = value
         return value, x, y
 
-    # That's fine for now?
+
     def play(self ,algo=None ,player_x=None ,player_o=None):
         if algo is None:
             algo = self.ALPHABETA
@@ -568,7 +572,7 @@ class Game:
                     (_, x, y) = self.minimax(max=False)
                 else:
                     (_, x, y) = self.minimax(max=True)
-            else: # algo == self.ALPHABETA
+            else:
                 if self.player_turn == 'X':
                     (m, x, y) = self.alphabeta(max=False)
                 else:
@@ -587,11 +591,33 @@ class Game:
             self.switch_player()
 
 
+    def getPlaymode(self):
+        return self.play_mode
+
+    def getAlgorithm(self):
+        return self.algorithm
+
 def main():
     g = Game(recommend=True)
-    g.play(algo=Game.ALPHABETA, player_x=Game.AI, player_o=Game.AI)
-    g.play(algo=Game.MINIMAX, player_x=Game.AI, player_o=Game.HUMAN)
 
+    if Game.getAlgorithm(g) == 0:
+        if Game.getPlaymode(g) == Game.HH:
+            g.play(algo=Game.MINIMAX, player_x=Game.HUMAN, player_o=Game.HUMAN)
+        elif Game.getPlaymode(g) == Game.HA:
+            g.play(algo=Game.MINIMAX, player_x=Game.HUMAN, player_o=Game.AI)
+        elif Game.getPlaymode(g) == Game.AH:
+            g.play(algo=Game.MINIMAX, player_x=Game.AI, player_o=Game.HUMAN)
+        else:
+            g.play(algo=Game.MINIMAX, player_x=Game.AI, player_o=Game.AI)
+    else:
+        if Game.getPlaymode(g) == Game.HH:
+            g.play(algo=Game.ALPHABETA, player_x=Game.HUMAN, player_o=Game.HUMAN)
+        elif Game.getPlaymode(g) == Game.HA:
+            g.play(algo=Game.ALPHABETA, player_x=Game.HUMAN, player_o=Game.AI)
+        elif Game.getPlaymode(g) == Game.AH:
+            g.play(algo=Game.ALPHABETA, player_x=Game.AI, player_o=Game.HUMAN)
+        else:
+            g.play(algo=Game.ALPHABETA, player_x=Game.AI, player_o=Game.AI)
 
 if __name__ == "__main__":
     main()
