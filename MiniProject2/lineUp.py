@@ -1,12 +1,5 @@
 # based on code from https://stackabuse.com/minimax-and-alpha-beta-pruning-in-python
 
-# Work to be done for input:
-# e1 is coded and check, needs to be worked into MINIMAX and ALPHABETA code
-# Work in the max depth into MINIMAX and ALPHABETA
-# Work in max time into MINIMAX and ALPHABETA
-# Work in the column labels into move input. Bloc positions already use proper column labels
-# Check illegal AI moves and end game?
-
 import time
 
 class Game:
@@ -91,8 +84,8 @@ class Game:
 
         # Get max depth of adversarial search for both players
         while depth_check:
-            depthP1 = int(input("Enter the max depth of the adversarial search for player 1: "))
-            depthP2 = int(input("Enter the max depth of the adversarial search for player 2: "))
+            depthP1 = int(input("Enter the max depth of the adversarial search for player 1 (X): "))
+            depthP2 = int(input("Enter the max depth of the adversarial search for player 2 (O): "))
             if depthP1 <= 0 or depthP2 <= 0:
                 print("Enter values that are positive and nonzero for both depths")
             else:
@@ -146,9 +139,8 @@ class Game:
                 print(F'{self.current_state[x][y]}', end="")
             print()
         print()
-        self.e1()
+        #self.e1()
 
-    # Has to account for column labels
     def is_valid(self, px, py):
         if px not in range(self.board_size) or py not in range(self.board_size):
             return False
@@ -328,8 +320,8 @@ class Game:
                         boolO = False
                         openingsO += 1
 
-        print(openingsX)
-        print(openingsO)
+        #print(openingsX)
+        #print(openingsO)
         return openingsX - openingsO
 
     def is_end(self):
@@ -431,7 +423,6 @@ class Game:
         # It's a tie!
         return '.'
 
-    # Has to account for column labels
     def check_end(self):
         self.result = self.is_end()
         # Printing the appropriate message if the game has ended
@@ -445,12 +436,18 @@ class Game:
             self.initialize_game()
         return self.result
 
-    # Has to account for column labels
     def input_move(self):
         while True:
             print(F'Player {self.player_turn}, enter your move:')
-            px = int(input('enter the x coordinate: '))
+            px = input('enter the x coordinate: ')
             py = int(input('enter the y coordinate: '))
+
+            if px in self.colLabels:
+                px = self.colLabels[px]
+            else:
+                print('The move is not valid! Try again.')
+                continue
+
             if self.is_valid(px, py):
                 return px, py
             else:
@@ -465,78 +462,93 @@ class Game:
         return self.player_turn
 
 
-    def minimax(self, max=False):
+    def minimax(self, max=False, depth = 0):
         # Minimizing for 'X' and maximizing for 'O'
         # Possible values are:
-        # -1 - win for 'X'
+        # -inf - win for 'X'
         # 0  - a tie
-        # 1  - loss for 'X'
-        # We're initially setting it to 2 or -2 as worse than the worst case:
-        value = 2
+        # inf  - loss for 'X'
+        # We're initially setting it to inf++ or -inf-- as worse than the worst case:
+
+        value = 10000000
         if max:
-            value = -2
+            value = -10000000
         x = None
         y = None
         result = self.is_end()
-        if result == 'X':
-            return -1, x, y
+        if round(time.time() - self.currentTime,7) >= (9.5/10)*self.max_AI_time:
+            return self.e1(), x, y
+        elif result == 'X':
+            return -1000000, x, y
         elif result == 'O':
-            return 1, x, y
+            return 1000000, x, y
         elif result == '.':
             return 0, x, y
+        elif self.max_depth[0] == depth + 1:
+            return self.e1(), x, y
+        elif self.max_depth[1] == depth + 1:
+            return self.e1(), x, y
         for i in range(self.board_size):
             for j in range(self.board_size):
                 if self.current_state[i][j] == '.':
                     if max:
                         self.current_state[i][j] = 'O'
-                        (v, _, _) = self.minimax(max=False)
+                        (v, _, _) = self.minimax(max=False, depth=depth+1)
                         if v > value:
                             value = v
                             x = i
                             y = j
                     else:
                         self.current_state[i][j] = 'X'
-                        (v, _, _) = self.minimax(max=True)
+                        (v, _, _) = self.minimax(max=True,depth=depth+1)
                         if v < value:
                             value = v
                             x = i
                             y = j
                     self.current_state[i][j] = '.'
+
         return value, x, y
 
 
-    def alphabeta(self, alpha=-2, beta=2, max=False):
+    def alphabeta(self, alpha=-2, beta=2, max=False, depth=0):
         # Minimizing for 'X' and maximizing for 'O'
         # Possible values are:
-        # -1 - win for 'X'
+        # -inf - win for 'X'
         # 0  - a tie
-        # 1  - loss for 'X'
-        # We're initially setting it to 2 or -2 as worse than the worst case:
-        value = 2
+        # inf  - loss for 'X'
+        # We're initially setting it to inf++  or -inf-- as worse than the worst case:
+        
+        value = 10000000
         if max:
-            value = -2
+            value = -10000000
         x = None
         y = None
         result = self.is_end()
-        if result == 'X':
-            return -1, x, y
+        if round(time.time() - self.currentTime,7) >= (9.5/10)*self.max_AI_time:
+            return self.e1(), x, y
+        elif result == 'X':
+            return -1000000, x, y
         elif result == 'O':
-            return 1, x, y
+            return 1000000, x, y
         elif result == '.':
             return 0, x, y
+        elif self.max_depth[0] == depth + 1:
+            return self.e1(), x, y
+        elif self.max_depth[1] == depth + 1:
+            return self.e1(), x, y
         for i in range(self.board_size):
             for j in range(self.board_size):
                 if self.current_state[i][j] == '.':
                     if max:
                         self.current_state[i][j] = 'O'
-                        (v, _, _) = self.alphabeta(alpha, beta, max=False)
+                        (v, _, _) = self.alphabeta(alpha, beta, max=False, depth=depth+1)
                         if v > value:
                             value = v
                             x = i
                             y = j
                     else:
                         self.current_state[i][j] = 'X'
-                        (v, _, _) = self.alphabeta(alpha, beta, max=True)
+                        (v, _, _) = self.alphabeta(alpha, beta, max=True, depth=depth+1)
                         if v < value:
                             value = v
                             x = i
@@ -563,10 +575,12 @@ class Game:
         if player_o is None:
             player_o = self.HUMAN
         while True:
+            self.currentTime = 0
             self.draw_board()
             if self.check_end():
                 return
             start = time.time()
+            self.currentTime = time.time()
             if algo == self.MINIMAX:
                 if self.player_turn == 'X':
                     (_, x, y) = self.minimax(max=False)
@@ -582,11 +596,15 @@ class Game:
                     (self.player_turn == 'O' and player_o == self.HUMAN):
                 if self.recommend:
                     print(F'Evaluation time: {round(end - start, 7)}s')
-                    print(F'Recommended move: x = {x}, y = {y}')
+                    print(F'Recommended move: '
+                          F'x = {list(self.colLabels.keys())[list(self.colLabels.values()).index(x)]}, '
+                          F'y = {y}')
                 (x, y) = self.input_move()
             if (self.player_turn == 'X' and player_x == self.AI) or (self.player_turn == 'O' and player_o == self.AI):
                 print(F'Evaluation time: {round(end - start, 7)}s')
-                print(F'Player {self.player_turn} under AI control plays: x = {x}, y = {y}')
+                print(F'Player {self.player_turn} under AI control plays: '
+                      F'x = {list(self.colLabels.keys())[list(self.colLabels.values()).index(x)]}, '
+                      F'y = {y}')
             self.current_state[x][y] = self.player_turn
             self.switch_player()
 
