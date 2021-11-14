@@ -332,7 +332,7 @@ class Game:
 
     def e2(self):
 
-        lengths = list(range(1, self.line_size + 1))
+        lengths = list(range(1, self.board_size+1))
         lengths.reverse()
         values = [10 ** length for length in lengths]
 
