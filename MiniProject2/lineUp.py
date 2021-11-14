@@ -132,12 +132,18 @@ class Game:
         # Player X always plays first
         self.player_turn = 'X'
 
-    def draw_board(self):
+    def draw_board(self,f=None):
+        f.write("\n")
+        f.write(F'Move #{self.turn_number}\n\n')
         print()
+        print(F'Move #{self.turn_number}')
         for y in range(self.board_size):
             for x in range(self.board_size):
+                f.write(F'{self.current_state[x][y]}')
                 print(F'{self.current_state[x][y]}', end="")
+            f.write("\n")
             print()
+        f.write("\n")
         print()
         #self.e1()
 
@@ -324,6 +330,145 @@ class Game:
         #print(openingsO)
         return openingsX - openingsO
 
+    def e2(self):
+
+        lengths = list(range(1, self.line_size + 1))
+        lengths.reverse()
+        values = [10 ** length for length in lengths]
+
+        totalX = 0
+        totalO = 0
+
+        # Vertical opening
+        for i in range(self.board_size):
+            valueX = 0
+            valueO = 0
+
+            for j in range(self.board_size):
+
+                if self.current_state[j][i] == 'X':
+                    valueX += 1
+                elif self.current_state[j][i] == 'O':
+                    valueO += 1
+
+            for l in range(len(lengths)):
+                if valueX == lengths[l]:
+                    totalX += values[l]
+                    break
+                elif valueO == lengths[l]:
+                    totalO += values[l]
+                    break
+
+        # Horizontal opening
+        for j in range(self.board_size):
+            valueX = 0
+            valueO = 0
+
+            for i in range(self.board_size):
+
+                if self.current_state[j][i] == 'X':
+                    valueX += 1
+                elif self.current_state[j][i] == 'O':
+                    valueO += 1
+
+            for l in range(len(lengths)):
+                if valueX == lengths[l]:
+                    totalX += values[l]
+                    break
+                elif valueO == lengths[l]:
+                    totalO += values[l]
+                    break
+
+        # Main diagonal
+        # Takes into account off-diagonals (Top half left to right)
+        for j in range((self.board_size + 1)-self.line_size):
+            valueX = 0
+            valueO = 0
+
+            for i in range(self.board_size - j):
+
+                if self.current_state[i][i+j] == 'X':
+                    valueX += 1
+                elif self.current_state[i][i+j]:
+                    valueO += 1
+
+            for l in range(len(lengths)):
+                if valueX == lengths[l]:
+                    totalX += values[l]
+                    break
+                elif valueO == lengths[l]:
+                    totalO += values[l]
+                    break
+
+        # Second diagonal
+        # Takes into account off-diagonals (Top half right to left)
+        for j in range((self.board_size+1)-self.line_size):
+            valueX = 0
+            valueO = 0
+
+            for i in range(self.board_size - j):
+
+                if self.current_state[i][self.board_size - 1 - i - j] == 'X':
+                    valueX += 1
+                elif self.current_state[i][self.board_size - 1 - i - j] == 'O':
+                    valueO += 1
+
+            for l in range(len(lengths)):
+                if valueX == lengths[l]:
+                    totalX += values[l]
+                    break
+                elif valueO == lengths[l]:
+                    totalO += values[l]
+                    break
+
+        # Need to account for off-diagonals for board size > line size
+        if self.board_size > self.line_size:
+
+            # Off-diagonal left side
+            # Excludes main diagonal
+            for j in range(self.board_size - self.line_size):
+                valueX = 0
+                valueO = 0
+
+                for i in range(self.board_size - 1 - j):
+
+                    if self.current_state[i + j + 1][i] == 'X':
+                        valueX += 1
+                    elif self.current_state[i + j + 1][i] == 'O':
+                        valueO += 1
+
+                for l in range(len(lengths)):
+                    if valueX == lengths[l]:
+                        totalX += values[l]
+                        break
+                    elif valueO == lengths[l]:
+                        totalO += values[l]
+                        break
+
+
+            # Off-diagonal right side
+            # Excludes second diagonal
+            for j in range(self.board_size - self.line_size):
+                valueX = 0
+                valueO = 0
+
+                for i in range(self.board_size - 1 - j):
+
+                    if self.current_state[i + j + 1][self.board_size - 1 - i] == 'X':
+                        valueX += 1
+                    elif self.current_state[i + j + 1][self.board_size - 1 - i] == 'O':
+                        valueO += 1
+
+                for l in range(len(lengths)):
+                    if valueX == lengths[l]:
+                        totalX += values[l]
+                        break
+                    elif valueO == lengths[l]:
+                        totalO += values[l]
+                        break
+
+        return totalX - totalO
+
     def is_end(self):
 
         # Vertical win
@@ -423,15 +568,18 @@ class Game:
         # It's a tie!
         return '.'
 
-    def check_end(self):
+    def check_end(self, f = None):
         self.result = self.is_end()
         # Printing the appropriate message if the game has ended
         if self.result is not None:
             if self.result == 'X':
+                f.write('The winner is X!')
                 print('The winner is X!')
             elif self.result == 'O':
+                f.write('The winner is O!')
                 print('The winner is O!')
             elif self.result == '.':
+                f.write("It's a tie!")
                 print("It's a tie!")
             self.initialize_game()
         return self.result
@@ -525,6 +673,13 @@ class Game:
         y = None
         result = self.is_end()
         if round(time.time() - self.currentTime,7) >= (9.5/10)*self.max_AI_time:
+            self.number_of_evaluted_nodes += 1
+
+            if str(depth) in self.depth_dict:
+                self.depth_dict[str(depth)] += 1
+            else:
+                self.depth_dict[str(depth)] = 1
+
             return self.e1(), x, y
         elif result == 'X':
             return -1000000, x, y
@@ -533,8 +688,22 @@ class Game:
         elif result == '.':
             return 0, x, y
         elif self.max_depth[0] == depth + 1:
+            self.number_of_evaluted_nodes += 1
+
+            if str(depth) in self.depth_dict:
+                self.depth_dict[str(depth)] += 1
+            else:
+                self.depth_dict[str(depth)] = 1
+
             return self.e1(), x, y
         elif self.max_depth[1] == depth + 1:
+            self.number_of_evaluted_nodes += 1
+
+            if str(depth) in self.depth_dict:
+                self.depth_dict[str(depth)] += 1
+            else:
+                self.depth_dict[str(depth)] = 1
+
             return self.e1(), x, y
         for i in range(self.board_size):
             for j in range(self.board_size):
@@ -567,20 +736,27 @@ class Game:
         return value, x, y
 
 
-    def play(self ,algo=None ,player_x=None ,player_o=None):
+    def play(self ,algo=None ,player_x=None ,player_o=None, f=None):
         if algo is None:
             algo = self.ALPHABETA
         if player_x is None:
             player_x = self.HUMAN
         if player_o is None:
             player_o = self.HUMAN
+
+        self.turn_number = 1
+
         while True:
             self.currentTime = 0
-            self.draw_board()
-            if self.check_end():
+            self.draw_board(f = f)
+            if self.check_end(f = f):
                 return
             start = time.time()
             self.currentTime = time.time()
+
+            self.number_of_evaluted_nodes = 0
+            self.depth_dict = {}
+
             if algo == self.MINIMAX:
                 if self.player_turn == 'X':
                     (_, x, y) = self.minimax(max=False)
@@ -592,6 +768,17 @@ class Game:
                 else:
                     (m, x, y) = self.alphabeta(max=True)
             end = time.time()
+
+            f.write(F'Evaluation time: {round(end - start, 7)}s\n')
+            f.write(F'Number of evaluated nodes: {self.number_of_evaluted_nodes}\n')
+            f.write(F'Evaluations by depth: {self.depth_dict}\n')
+
+            if self.number_of_evaluted_nodes > 0:
+                sum = 0
+                for key in self.depth_dict:
+                    sum += int(key) * self.depth_dict[key]
+                f.write(F'Average evaluation depth: {sum / self.number_of_evaluted_nodes}\n')
+
             if (self.player_turn == 'X' and player_x == self.HUMAN) or \
                     (self.player_turn == 'O' and player_o == self.HUMAN):
                 if self.recommend:
@@ -600,13 +787,20 @@ class Game:
                           F'x = {list(self.colLabels.keys())[list(self.colLabels.values()).index(x)]}, '
                           F'y = {y}')
                 (x, y) = self.input_move()
+                f.write(F'Player {self.player_turn} plays: ' 
+                        F'x = {x} '
+                        F'y = {y}\n')
             if (self.player_turn == 'X' and player_x == self.AI) or (self.player_turn == 'O' and player_o == self.AI):
                 print(F'Evaluation time: {round(end - start, 7)}s')
+                f.write(F'Player {self.player_turn} under AI control plays: '
+                      F'x = {list(self.colLabels.keys())[list(self.colLabels.values()).index(x)]}, '
+                      F'y = {y}\n')
                 print(F'Player {self.player_turn} under AI control plays: '
                       F'x = {list(self.colLabels.keys())[list(self.colLabels.values()).index(x)]}, '
                       F'y = {y}')
             self.current_state[x][y] = self.player_turn
             self.switch_player()
+            self.turn_number += 1
 
 
     def getPlaymode(self):
@@ -618,24 +812,46 @@ class Game:
 def main():
     g = Game(recommend=True)
 
+    file_name = "gameTrace-{}{}{}{}.txt".format(g.board_size,g.num_blocs,g.line_size,int(g.max_AI_time))
+
+    f = open(file_name, "w")
+    f.write("n={} b={} s={} t={}\n".format(g.board_size,g.num_blocs,g.line_size,g.max_AI_time))
+    f.write("blocks={}\n\n".format(g.bloc_posi))
+
+    if g.play_mode == 0:
+        f.write("Player 1: Human d={} a={} e1\n".format(g.max_depth[0], bool(g.algorithm)))
+        f.write("Player 2: Human d={} a={} e1\n".format(g.max_depth[1], bool(g.algorithm)))
+    elif g.play_mode == 1:
+        f.write("Player 1: Human d={} a={} e1\n".format(g.max_depth[0], bool(g.algorithm)))
+        f.write("Player 2: AI d={} a={} e1\n".format(g.max_depth[1], bool(g.algorithm)))
+    elif g.play_mode == 2:
+        f.write("Player 1: AI d={} a={} e1\n".format(g.max_depth[0], bool(g.algorithm)))
+        f.write("Player 2: Human d={} a={} e1\n".format(g.max_depth[1], bool(g.algorithm)))
+    elif g.play_mode == 3:
+        f.write("Player 1: AI d={} a={} e1\n".format(g.max_depth[0], bool(g.algorithm)))
+        f.write("Player 2: AI d={} a={} e1\n".format(g.max_depth[1], bool(g.algorithm)))
+
+
     if Game.getAlgorithm(g) == 0:
         if Game.getPlaymode(g) == Game.HH:
-            g.play(algo=Game.MINIMAX, player_x=Game.HUMAN, player_o=Game.HUMAN)
+            g.play(algo=Game.MINIMAX, player_x=Game.HUMAN, player_o=Game.HUMAN, f = f)
         elif Game.getPlaymode(g) == Game.HA:
-            g.play(algo=Game.MINIMAX, player_x=Game.HUMAN, player_o=Game.AI)
+            g.play(algo=Game.MINIMAX, player_x=Game.HUMAN, player_o=Game.AI, f = f)
         elif Game.getPlaymode(g) == Game.AH:
-            g.play(algo=Game.MINIMAX, player_x=Game.AI, player_o=Game.HUMAN)
+            g.play(algo=Game.MINIMAX, player_x=Game.AI, player_o=Game.HUMAN, f = f)
         else:
-            g.play(algo=Game.MINIMAX, player_x=Game.AI, player_o=Game.AI)
+            g.play(algo=Game.MINIMAX, player_x=Game.AI, player_o=Game.AI, f = f)
     else:
         if Game.getPlaymode(g) == Game.HH:
-            g.play(algo=Game.ALPHABETA, player_x=Game.HUMAN, player_o=Game.HUMAN)
+            g.play(algo=Game.ALPHABETA, player_x=Game.HUMAN, player_o=Game.HUMAN, f = f)
         elif Game.getPlaymode(g) == Game.HA:
-            g.play(algo=Game.ALPHABETA, player_x=Game.HUMAN, player_o=Game.AI)
+            g.play(algo=Game.ALPHABETA, player_x=Game.HUMAN, player_o=Game.AI, f = f)
         elif Game.getPlaymode(g) == Game.AH:
-            g.play(algo=Game.ALPHABETA, player_x=Game.AI, player_o=Game.HUMAN)
+            g.play(algo=Game.ALPHABETA, player_x=Game.AI, player_o=Game.HUMAN, f = f)
         else:
-            g.play(algo=Game.ALPHABETA, player_x=Game.AI, player_o=Game.AI)
+            g.play(algo=Game.ALPHABETA, player_x=Game.AI, player_o=Game.AI, f = f)
+
+    f.close()
 
 if __name__ == "__main__":
     main()
