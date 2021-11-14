@@ -1,0 +1,144 @@
+n=4 b=4 s=3 t=1.0
+blocks=[[0, 0], [0, 3], [3, 0], [3, 3]]
+
+Player 1: AI d=6 a=True e2
+Player 2: AI d=6 a=True e1
+
+Move #1
+
+*..*
+....
+....
+*..*
+
+Evaluation time: 0.015626s
+Number of evaluated nodes: 1329
+Evaluations by depth: {'5': 1329}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = A, y = 1
+
+Move #2
+
+*..*
+X...
+....
+*..*
+
+Evaluation time: 0.0312479s
+Number of evaluated nodes: 4432
+Evaluations by depth: {'5': 4432}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = A, y = 2
+
+Move #3
+
+*..*
+X...
+O...
+*..*
+
+Evaluation time: 0.0s
+Number of evaluated nodes: 113
+Evaluations by depth: {'5': 113}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = B, y = 1
+
+Move #4
+
+*..*
+XX..
+O...
+*..*
+
+Evaluation time: 0.0s
+Number of evaluated nodes: 77
+Evaluations by depth: {'5': 77}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = B, y = 0
+
+Move #5
+
+*O.*
+XX..
+O...
+*..*
+
+Evaluation time: 0.0s
+Number of evaluated nodes: 1
+Evaluations by depth: {'5': 1}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = B, y = 2
+
+Move #6
+
+*O.*
+XX..
+OX..
+*..*
+
+Evaluation time: 0.0s
+Number of evaluated nodes: 2
+Evaluations by depth: {'5': 2}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = B, y = 3
+
+Move #7
+
+*O.*
+XX..
+OX..
+*O.*
+
+Evaluation time: 0.0s
+Number of evaluated nodes: 1
+Evaluations by depth: {'5': 1}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = C, y = 0
+
+Move #8
+
+*OX*
+XX..
+OX..
+*O.*
+
+Evaluation time: 0.0s
+Number of evaluated nodes: 0
+Evaluations by depth: {}
+ARD: 0
+Player O under AI control plays: x = C, y = 1
+
+Move #9
+
+*OX*
+XXO.
+OX..
+*O.*
+
+Evaluation time: 0.0s
+Number of evaluated nodes: 0
+Evaluations by depth: {}
+ARD: 0
+Player X under AI control plays: x = C, y = 3
+
+Move #10
+
+*OX*
+XXO.
+OX..
+*OX*
+
+The winner is X!
+Average heuristic time: 0.00468739
+Number of states evaluated: 5955
+Average average depth: 3.5
+Total number of nodes evaluated at every depth: {'5': 1329, '6': 4432, '7': 113, '8': 77, '9': 1, '10': 2, '11': 1}
+Average ARD: 3.5
+Total number of moves: 10

@@ -1,0 +1,31 @@
+n=4 b=4 s=3 t=5.0
+
+Player 1: AI d=6 a=False e1
+Player 2: AI d=6 a=False e2
+
+10 games
+
+Total wins for e1: 10 (1.0%)
+Total wins for e2: 0 (0.0%)
+
+Average heuristics time: 0.14484172625
+Total evaluated nodes: 1699080
+Evaluations by depth: {'5': 898560, '6': 482520, '7': 204240, '8': 86760, '9': 21600, '10': 4800, '11': 600}
+Average evaluation depth: 5.7446853591355325
+ARD: 55.961669818834885
+Average moves per game: 8.0
+
+n=4 b=4 s=3 t=1.0
+Player 1: AI d=6 a=True e2
+Player 2: AI d=6 a=True e1
+10 games
+
+Total wins for e1: 0 (0.0%)
+Total wins for e2: 10 (1.0%)
+
+Average heuristics time: 0.006093681
+Total evaluated nodes: 59550
+Evaluations by depth: {'5': 13290, '6': 44320, '7': 1130, '8': 770, '9': 10, '10': 20, '11': 10}
+Average evaluation depth: 5.824349286314022
+ARD: 53.248356222286574
+Average moves per game: 10.0

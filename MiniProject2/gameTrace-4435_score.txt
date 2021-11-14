@@ -1,0 +1,118 @@
+n=4 b=4 s=3 t=5.0
+blocks=[[0, 0], [0, 3], [3, 0], [3, 3]]
+
+Player 1: AI d=6 a=False e1
+Player 2: AI d=6 a=False e2
+
+Move #1
+
+*..*
+....
+....
+*..*
+
+Evaluation time: 0.5468991s
+Number of evaluated nodes: 89856
+Evaluations by depth: {'5': 89856}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = B, y = 1
+
+Move #2
+
+*..*
+.X..
+....
+*..*
+
+Evaluation time: 0.3125069s
+Number of evaluated nodes: 48252
+Evaluations by depth: {'5': 48252}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = A, y = 1
+
+Move #3
+
+*..*
+OX..
+....
+*..*
+
+Evaluation time: 0.14062s
+Number of evaluated nodes: 20424
+Evaluations by depth: {'5': 20424}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = A, y = 2
+
+Move #4
+
+*..*
+OX..
+X...
+*..*
+
+Evaluation time: 0.062499s
+Number of evaluated nodes: 8676
+Evaluations by depth: {'5': 8676}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = B, y = 0
+
+Move #5
+
+*O.*
+OX..
+X...
+*..*
+
+Evaluation time: 0.0s
+Number of evaluated nodes: 2160
+Evaluations by depth: {'5': 2160}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = B, y = 2
+
+Move #6
+
+*O.*
+OX..
+XX..
+*..*
+
+Evaluation time: 0.0s
+Number of evaluated nodes: 480
+Evaluations by depth: {'5': 480}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = B, y = 3
+
+Move #7
+
+*O.*
+OX..
+XX..
+*O.*
+
+Evaluation time: 0.0s
+Number of evaluated nodes: 60
+Evaluations by depth: {'5': 60}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = C, y = 0
+
+Move #8
+
+*OX*
+OX..
+XX..
+*O.*
+
+The winner is X!
+Average heuristic time: 0.132815625
+Number of states evaluated: 169908
+Average average depth: 4.375
+Total number of nodes evaluated at every depth: {'5': 89856, '6': 48252, '7': 20424, '8': 8676, '9': 2160, '10': 480, '11': 60}
+Average ARD: 4.375
+Total number of moves: 8
