@@ -331,95 +331,250 @@ class Game:
         return openingsX - openingsO
 
     def e2(self):
-
-        lengths = list(range(1, self.board_size+1))
-        lengths.reverse()
-        values = [10 ** length for length in lengths]
-
-        totalX = 0
-        totalO = 0
+        # All values are counted per permutation of an open line
+        # Ex. |X|X| | |X|X|, With line_size = 3
+        # There exists 4 permutations for X (openings)
+        # These permutations have different total X and adjacency counts
+        openingsX = 0
+        openingsO = 0
+        adjacentX = 0
+        adjacentO = 0
+        totalOpeningX = 0
+        totalOpeningO = 0
 
         # Vertical opening
         for i in range(self.board_size):
-            valueX = 0
-            valueO = 0
+            checkX = 0
+            checkO = 0
+            tempCountX = 0
+            tempCountO = 0
+            tempAdjX1 = -1
+            tempAdjX2 = 0
+            tempAdjO1 = -1
+            tempAdjO2 = 0
 
             for j in range(self.board_size):
 
-                if self.current_state[j][i] == 'X':
-                    valueX += 1
-                elif self.current_state[j][i] == 'O':
-                    valueO += 1
+                if self.current_state[j][i] == '.' or self.current_state[j][i] == 'X':
+                    checkX += 1
 
-            for l in range(len(lengths)):
-                if valueX == lengths[l]:
-                    totalX += values[l]
-                    break
-                elif valueO == lengths[l]:
-                    totalO += values[l]
-                    break
+                    if self.current_state[j][i] == 'X':
+                        tempAdjX1 += 1
+                        tempCountX += 1
+                    elif tempAdjX1 > 0:
+                        tempAdjX2 += tempAdjX1
+                        tempAdjX1 = 0
+                    else:
+                        tempAdjX1 = 0
+
+                else:
+                    tempAdjX2 = 0
+                    tempCountX = 0
+                    checkX = 0
+
+                if self.current_state[j][i] == '.' or self.current_state[j][i] == 'O':
+                    checkO += 1
+
+                    if self.current_state[j][i] == 'O':
+                        tempAdjO1 += 1
+                        tempCountO += 1
+                    elif tempAdjO1 > 0:
+                        tempAdjO2 += tempAdjO1
+                        tempAdjO1 = 0
+                    else:
+                        tempAdjO1 = 0
+
+                else:
+                    tempAdjO2 = 0
+                    tempCountO = 0
+                    checkO = 0
+
+                if checkX == self.line_size:
+                    totalOpeningX += tempCountX
+                    adjacentX += tempAdjX2
+                    j -= self.line_size - 2
+                    openingsX += 1
+
+                if checkO == self.line_size:
+                    totalOpeningO += tempCountO
+                    adjacentO += tempAdjO2
+                    j -= self.line_size - 2
+                    openingsO += 1
 
         # Horizontal opening
         for j in range(self.board_size):
-            valueX = 0
-            valueO = 0
+            tempCountX = 0
+            tempCountO = 0
+            tempAdjX1 = -1
+            tempAdjX2 = 0
+            tempAdjO1 = -1
+            tempAdjO2 = 0
 
             for i in range(self.board_size):
 
-                if self.current_state[j][i] == 'X':
-                    valueX += 1
-                elif self.current_state[j][i] == 'O':
-                    valueO += 1
+                if self.current_state[j][i] == '.' or self.current_state[j][i] == 'X':
+                    checkX += 1
 
-            for l in range(len(lengths)):
-                if valueX == lengths[l]:
-                    totalX += values[l]
-                    break
-                elif valueO == lengths[l]:
-                    totalO += values[l]
-                    break
+                    if self.current_state[j][i] == 'X':
+                        tempAdjX1 += 1
+                        tempCountX += 1
+                    elif tempAdjX1 > 0:
+                        tempAdjX2 += tempAdjX1
+                        tempAdjX1 = 0
+                    else:
+                        tempAdjX1 = 0
+
+                else:
+                    tempAdjX2 = 0
+                    tempCountX = 0
+                    checkX = 0
+
+                if self.current_state[j][i] == '.' or self.current_state[j][i] == 'O':
+                    checkO += 1
+
+                    if self.current_state[j][i] == 'O':
+                        tempAdjO1 += 1
+                        tempCountO += 1
+                    elif tempAdjO1 > 0:
+                        tempAdjO2 += tempAdjO1
+                        tempAdjO1 = 0
+                    else:
+                        tempAdjO1 = 0
+
+                else:
+                    tempAdjO2 = 0
+                    tempCountO = 0
+                    checkO = 0
+
+                if checkX == self.line_size:
+                    totalOpeningX += tempCountX
+                    adjacentX += tempAdjX2
+                    i -= self.line_size - 2
+                    openingsX += 1
+
+                if checkO == self.line_size:
+                    totalOpeningO += tempCountO
+                    adjacentO += tempAdjO2
+                    i -= self.line_size - 2
+                    openingsO += 1
 
         # Main diagonal
         # Takes into account off-diagonals (Top half left to right)
-        for j in range((self.board_size + 1)-self.line_size):
-            valueX = 0
-            valueO = 0
+        for j in range((self.board_size + 1) - self.line_size):
+            tempCountX = 0
+            tempCountO = 0
+            tempAdjX1 = -1
+            tempAdjX2 = 0
+            tempAdjO1 = -1
+            tempAdjO2 = 0
 
             for i in range(self.board_size - j):
 
-                if self.current_state[i][i+j] == 'X':
-                    valueX += 1
-                elif self.current_state[i][i+j]:
-                    valueO += 1
+                if self.current_state[i][i + j] == '.' or self.current_state[i][i + j] == 'X':
+                    checkX += 1
 
-            for l in range(len(lengths)):
-                if valueX == lengths[l]:
-                    totalX += values[l]
-                    break
-                elif valueO == lengths[l]:
-                    totalO += values[l]
-                    break
+                    if self.current_state[i][i + j] == 'X':
+                        tempAdjX1 += 1
+                        tempCountX += 1
+                    elif tempAdjX1 > 0:
+                        tempAdjX2 += tempAdjX1
+                        tempAdjX1 = 0
+                    else:
+                        tempAdjX1 = 0
+
+                else:
+                    tempAdjX2 = 0
+                    tempCountX = 0
+                    checkX = 0
+
+                if self.current_state[i][i + j] == '.' or self.current_state[i][i + j] == 'O':
+                    checkO += 1
+
+                    if self.current_state[i][i + j] == 'O':
+                        tempAdjO1 += 1
+                        tempCountO += 1
+                    elif tempAdjO1 > 0:
+                        tempAdjO2 += tempAdjO1
+                        tempAdjO1 = 0
+                    else:
+                        tempAdjO1 = 0
+
+                else:
+                    tempAdjO2 = 0
+                    tempCountO = 0
+                    checkO = 0
+
+                if checkX == self.line_size:
+                    totalOpeningX += tempCountX
+                    adjacentX += tempAdjX2
+                    i -= self.line_size - 2
+                    openingsX += 1
+
+                if checkO == self.line_size:
+                    totalOpeningO += tempCountO
+                    adjacentO += tempAdjO2
+                    i -= self.line_size - 2
+                    openingsO += 1
 
         # Second diagonal
         # Takes into account off-diagonals (Top half right to left)
-        for j in range((self.board_size+1)-self.line_size):
-            valueX = 0
-            valueO = 0
+        for j in range((self.board_size + 1) - self.line_size):
+            tempCountX = 0
+            tempCountO = 0
+            tempAdjX1 = -1
+            tempAdjX2 = 0
+            tempAdjO1 = -1
+            tempAdjO2 = 0
 
             for i in range(self.board_size - j):
 
-                if self.current_state[i][self.board_size - 1 - i - j] == 'X':
-                    valueX += 1
-                elif self.current_state[i][self.board_size - 1 - i - j] == 'O':
-                    valueO += 1
+                if self.current_state[i][self.board_size - 1 - i - j] == '.' \
+                        or self.current_state[i][self.board_size - 1 - i - j] == 'X':
+                    checkX += 1
 
-            for l in range(len(lengths)):
-                if valueX == lengths[l]:
-                    totalX += values[l]
-                    break
-                elif valueO == lengths[l]:
-                    totalO += values[l]
-                    break
+                    if self.current_state[i][self.board_size - 1 - i - j] == 'X':
+                        tempAdjX1 += 1
+                        tempCountX += 1
+                    elif tempAdjX1 > 0:
+                        tempAdjX2 += tempAdjX1
+                        tempAdjX1 = 0
+                    else:
+                        tempAdjX1 = 0
+
+                else:
+                    tempAdjX2 = 0
+                    tempCountX = 0
+                    checkX = 0
+
+                if self.current_state[i][self.board_size - 1 - i - j] == '.' \
+                        or self.current_state[i][self.board_size - 1 - i - j] == 'O':
+                    checkO += 1
+
+                    if self.current_state[i][self.board_size - 1 - i - j] == 'O':
+                        tempAdjO1 += 1
+                        tempCountO += 1
+                    elif tempAdjO1 > 0:
+                        tempAdjO2 += tempAdjO1
+                        tempAdjO1 = 0
+                    else:
+                        tempAdjO1 = 0
+
+                else:
+                    tempAdjO2 = 0
+                    tempCountO = 0
+                    checkO = 0
+
+                if checkX == self.line_size:
+                    totalOpeningX += tempCountX
+                    adjacentX += tempAdjX2
+                    i -= self.line_size - 2
+                    openingsX += 1
+
+                if checkO == self.line_size:
+                    totalOpeningO += tempCountO
+                    adjacentO += tempAdjO2
+                    i -= self.line_size - 2
+                    openingsO += 1
 
         # Need to account for off-diagonals for board size > line size
         if self.board_size > self.line_size:
@@ -427,47 +582,124 @@ class Game:
             # Off-diagonal left side
             # Excludes main diagonal
             for j in range(self.board_size - self.line_size):
-                valueX = 0
-                valueO = 0
+                tempCountX = 0
+                tempCountO = 0
+                tempAdjX1 = -1
+                tempAdjX2 = 0
+                tempAdjO1 = -1
+                tempAdjO2 = 0
 
                 for i in range(self.board_size - 1 - j):
 
-                    if self.current_state[i + j + 1][i] == 'X':
-                        valueX += 1
-                    elif self.current_state[i + j + 1][i] == 'O':
-                        valueO += 1
+                    if self.current_state[i + j + 1][i] == '.' or self.current_state[i + j + 1][i] == 'X':
+                        checkX += 1
 
-                for l in range(len(lengths)):
-                    if valueX == lengths[l]:
-                        totalX += values[l]
-                        break
-                    elif valueO == lengths[l]:
-                        totalO += values[l]
-                        break
+                        if self.current_state[i + j + 1][i] == 'X':
+                            tempAdjX1 += 1
+                            tempCountX += 1
+                        elif tempAdjX1 > 0:
+                            tempAdjX2 += tempAdjX1
+                            tempAdjX1 = 0
+                        else:
+                            tempAdjX1 = 0
 
+                    else:
+                        tempAdjX2 = 0
+                        tempCountX = 0
+                        checkX = 0
+
+                    if self.current_state[i + j + 1][i] == '.' or self.current_state[i + j + 1][i] == 'O':
+                        checkO += 1
+
+                        if self.current_state[i + j + 1][i] == 'O':
+                            tempAdjO1 += 1
+                            tempCountO += 1
+                        elif tempAdjO1 > 0:
+                            tempAdjO2 += tempAdjO1
+                            tempAdjO1 = 0
+                        else:
+                            tempAdjO1 = 0
+
+                    else:
+                        tempAdjO2 = 0
+                        tempCountO = 0
+                        checkO = 0
+
+                    if checkX == self.line_size:
+                        totalOpeningX += tempCountX
+                        adjacentX += tempAdjX2
+                        i -= self.line_size - 2
+                        openingsX += 1
+
+                    if checkO == self.line_size:
+                        totalOpeningO += tempCountO
+                        adjacentO += tempAdjO2
+                        i -= self.line_size - 2
+                        openingsO += 1
 
             # Off-diagonal right side
             # Excludes second diagonal
             for j in range(self.board_size - self.line_size):
-                valueX = 0
-                valueO = 0
+                tempCountX = 0
+                tempCountO = 0
+                tempAdjX1 = -1
+                tempAdjX2 = 0
+                tempAdjO1 = -1
+                tempAdjO2 = 0
 
                 for i in range(self.board_size - 1 - j):
 
-                    if self.current_state[i + j + 1][self.board_size - 1 - i] == 'X':
-                        valueX += 1
-                    elif self.current_state[i + j + 1][self.board_size - 1 - i] == 'O':
-                        valueO += 1
+                    if self.current_state[i + j + 1][self.board_size - 1 - i] == '.' \
+                            or self.current_state[i + j + 1][self.board_size - 1 - i] == 'X':
+                        checkX += 1
 
-                for l in range(len(lengths)):
-                    if valueX == lengths[l]:
-                        totalX += values[l]
-                        break
-                    elif valueO == lengths[l]:
-                        totalO += values[l]
-                        break
+                        if self.current_state[i + j + 1][self.board_size - 1 - i] == 'X':
+                            tempAdjX1 += 1
+                            tempCountX += 1
+                        elif tempAdjX1 > 0:
+                            tempAdjX2 += tempAdjX1
+                            tempAdjX1 = 0
+                        else:
+                            tempAdjX1 = 0
 
-        return totalX - totalO
+                    else:
+                        tempAdjX2 = 0
+                        tempCountX = 0
+                        checkX = 0
+
+                    if self.current_state[i + j + 1][self.board_size - 1 - i] == '.' \
+                            or self.current_state[i + j + 1][self.board_size - 1 - i] == 'O':
+                        checkO += 1
+
+                        if self.current_state[i + j + 1][self.board_size - 1 - i] == 'O':
+                            tempAdjO1 += 1
+                            tempCountO += 1
+                        elif tempAdjO1 > 0:
+                            tempAdjO2 += tempAdjO1
+                            tempAdjO1 = 0
+                        else:
+                            tempAdjO1 = 0
+
+                    else:
+                        tempAdjO2 = 0
+                        tempCountO = 0
+                        checkO = 0
+
+                    if checkX == self.line_size:
+                        totalOpeningX += tempCountX
+                        adjacentX += tempAdjX2
+                        i -= self.line_size - 2
+                        openingsX += 1
+
+                    if checkO == self.line_size:
+                        totalOpeningO += tempCountO
+                        adjacentO += tempAdjO2
+                        i -= self.line_size - 2
+                        openingsO += 1
+
+        # print(openingsX + adjacentX + totalOpeningX)
+        # print(openingsO + adjacentO + totalOpeningO)
+        return (openingsX + adjacentX + totalOpeningX) - (openingsO + adjacentO + totalOpeningO)
 
     def is_end(self):
 
