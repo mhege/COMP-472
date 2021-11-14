@@ -31,6 +31,7 @@ class Game:
         time_check = True
         algo_check = True
         playmode_check = True
+        e_check = True
 
         # Get input for the size of the board
         while board_check:
@@ -107,6 +108,15 @@ class Game:
                 print("Enter either 0 or 1")
             else:
                 algo_check = False
+
+        while e_check:
+            e_P1 = int(input("Enter the heuristic for player 1 (X), 1 (e1) or 2 (e2): "))
+            e_P2 = int(input("Enter the heuristic for player 2 (O), 1 (e1) or 2 (e2): "))
+            if e_P1 not in range(1,3) or e_P2 not in range(1,3):
+                print("Enter proper values for both player's heuristic")
+            else:
+                e_check = False
+                self.heuristics = [e_P1, e_P2]
 
         # Get play mode. Let 0: H-H, 1:H-AI, 2:AI-H, 3:AI-AI
         while playmode_check:
@@ -857,7 +867,24 @@ class Game:
         y = None
         result = self.is_end()
         if round(time.time() - self.currentTime,7) >= (9.5/10)*self.max_AI_time:
-            return self.e1(), x, y
+            self.number_of_evaluated_nodes += 1
+
+            if str(depth) in self.depth_dict:
+                self.depth_dict[str(depth)] += 1
+            else:
+                self.depth_dict[str(depth)] = 1
+
+            if self.player_turn == 'X':
+                if self.heuristics[0] == 1:
+                    return self.e1(), x, y
+                else:
+                    return self.e2(), x, y
+            else:
+                if self.heuristics[1] == 1:
+                    return self.e1(), x, y
+                else:
+                    return self.e2(), x, y
+
         elif result == 'X':
             return -1000000, x, y
         elif result == 'O':
@@ -865,9 +892,41 @@ class Game:
         elif result == '.':
             return 0, x, y
         elif self.max_depth[0] == depth + 1:
-            return self.e1(), x, y
+            self.number_of_evaluated_nodes += 1
+
+            if str(depth) in self.depth_dict:
+                self.depth_dict[str(depth)] += 1
+            else:
+                self.depth_dict[str(depth)] = 1
+
+            if self.player_turn == 'X':
+                if self.heuristics[0] == 1:
+                    return self.e1(), x, y
+                else:
+                    return self.e2(), x, y
+            else:
+                if self.heuristics[1] == 1:
+                    return self.e1(), x, y
+                else:
+                    return self.e2(), x, y
         elif self.max_depth[1] == depth + 1:
-            return self.e1(), x, y
+            self.number_of_evaluated_nodes += 1
+
+            if str(depth) in self.depth_dict:
+                self.depth_dict[str(depth)] += 1
+            else:
+                self.depth_dict[str(depth)] = 1
+
+            if self.player_turn == 'X':
+                if self.heuristics[0] == 1:
+                    return self.e1(), x, y
+                else:
+                    return self.e2(), x, y
+            else:
+                if self.heuristics[1] == 1:
+                    return self.e1(), x, y
+                else:
+                    return self.e2(), x, y
         for i in range(self.board_size):
             for j in range(self.board_size):
                 if self.current_state[i][j] == '.':
@@ -912,7 +971,17 @@ class Game:
             else:
                 self.depth_dict[str(depth)] = 1
 
-            return self.e1(), x, y
+            if self.player_turn == 'X':
+                if self.heuristics[0] == 1:
+                    return self.e1(), x, y
+                else:
+                    return self.e2(), x, y
+            else:
+                if self.heuristics[1] == 1:
+                    return self.e1(), x, y
+                else:
+                    return self.e2(), x, y
+
         elif result == 'X':
             return -1000000, x, y
         elif result == 'O':
@@ -927,7 +996,17 @@ class Game:
             else:
                 self.depth_dict[str(depth)] = 1
 
-            return self.e1(), x, y
+            if self.player_turn == 'X':
+                if self.heuristics[0] == 1:
+                    return self.e1(), x, y
+                else:
+                    return self.e2(), x, y
+            else:
+                if self.heuristics[1] == 1:
+                    return self.e1(), x, y
+                else:
+                    return self.e2(), x, y
+
         elif self.max_depth[1] == depth + 1:
             self.number_of_evaluated_nodes += 1
 
@@ -936,7 +1015,16 @@ class Game:
             else:
                 self.depth_dict[str(depth)] = 1
 
-            return self.e1(), x, y
+            if self.player_turn == 'X':
+                if self.heuristics[0] == 1:
+                    return self.e1(), x, y
+                else:
+                    return self.e2(), x, y
+            else:
+                if self.heuristics[1] == 1:
+                    return self.e1(), x, y
+                else:
+                    return self.e2(), x, y
         for i in range(self.board_size):
             for j in range(self.board_size):
                 if self.current_state[i][j] == '.':
@@ -1065,17 +1153,17 @@ def main():
     f.write("blocks={}\n\n".format(g.bloc_posi))
 
     if g.play_mode == 0:
-        f.write("Player 1: Human d={} a={} e1\n".format(g.max_depth[0], bool(g.algorithm)))
-        f.write("Player 2: Human d={} a={} e1\n".format(g.max_depth[1], bool(g.algorithm)))
+        f.write("Player 1: Human d={} a={} {}\n".format(g.max_depth[0], bool(g.algorithm), 'e'+str(g.heuristics[0])))
+        f.write("Player 2: Human d={} a={} {}\n".format(g.max_depth[1], bool(g.algorithm), 'e'+str(g.heuristics[1])))
     elif g.play_mode == 1:
-        f.write("Player 1: Human d={} a={} e1\n".format(g.max_depth[0], bool(g.algorithm)))
-        f.write("Player 2: AI d={} a={} e1\n".format(g.max_depth[1], bool(g.algorithm)))
+        f.write("Player 1: Human d={} a={} {}\n".format(g.max_depth[0], bool(g.algorithm), 'e'+str(g.heuristics[0])))
+        f.write("Player 2: AI d={} a={} {}\n".format(g.max_depth[1], bool(g.algorithm), 'e'+str(g.heuristics[1])))
     elif g.play_mode == 2:
-        f.write("Player 1: AI d={} a={} e1\n".format(g.max_depth[0], bool(g.algorithm)))
-        f.write("Player 2: Human d={} a={} e1\n".format(g.max_depth[1], bool(g.algorithm)))
+        f.write("Player 1: AI d={} a={} {}\n".format(g.max_depth[0], bool(g.algorithm), 'e'+str(g.heuristics[0])))
+        f.write("Player 2: Human d={} a={} {}\n".format(g.max_depth[1], bool(g.algorithm), 'e'+str(g.heuristics[1])))
     elif g.play_mode == 3:
-        f.write("Player 1: AI d={} a={} e1\n".format(g.max_depth[0], bool(g.algorithm)))
-        f.write("Player 2: AI d={} a={} e1\n".format(g.max_depth[1], bool(g.algorithm)))
+        f.write("Player 1: AI d={} a={} {}\n".format(g.max_depth[0], bool(g.algorithm), 'e'+str(g.heuristics[0])))
+        f.write("Player 2: AI d={} a={} {}\n".format(g.max_depth[1], bool(g.algorithm), 'e'+str(g.heuristics[1])))
 
 
     if Game.getAlgorithm(g) == 0:
