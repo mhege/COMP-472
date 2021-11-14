@@ -573,13 +573,13 @@ class Game:
         # Printing the appropriate message if the game has ended
         if self.result is not None:
             if self.result == 'X':
-                f.write('The winner is X!')
+                f.write('The winner is X!\n')
                 print('The winner is X!')
             elif self.result == 'O':
-                f.write('The winner is O!')
+                f.write('The winner is O!\n')
                 print('The winner is O!')
             elif self.result == '.':
-                f.write("It's a tie!")
+                f.write("It's a tie!\n")
                 print("It's a tie!")
             self.initialize_game()
         return self.result
@@ -673,7 +673,7 @@ class Game:
         y = None
         result = self.is_end()
         if round(time.time() - self.currentTime,7) >= (9.5/10)*self.max_AI_time:
-            self.number_of_evaluted_nodes += 1
+            self.number_of_evaluated_nodes += 1
 
             if str(depth) in self.depth_dict:
                 self.depth_dict[str(depth)] += 1
@@ -688,7 +688,7 @@ class Game:
         elif result == '.':
             return 0, x, y
         elif self.max_depth[0] == depth + 1:
-            self.number_of_evaluted_nodes += 1
+            self.number_of_evaluated_nodes += 1
 
             if str(depth) in self.depth_dict:
                 self.depth_dict[str(depth)] += 1
@@ -697,7 +697,7 @@ class Game:
 
             return self.e1(), x, y
         elif self.max_depth[1] == depth + 1:
-            self.number_of_evaluted_nodes += 1
+            self.number_of_evaluated_nodes += 1
 
             if str(depth) in self.depth_dict:
                 self.depth_dict[str(depth)] += 1
@@ -745,6 +745,10 @@ class Game:
             player_o = self.HUMAN
 
         self.turn_number = 1
+        self.total_time = 0
+        self.total_evaluated_nodes = 0
+        self.total_average_depths = 0
+        self.total_depth_dict = {}
 
         while True:
             self.currentTime = 0
@@ -754,7 +758,7 @@ class Game:
             start = time.time()
             self.currentTime = time.time()
 
-            self.number_of_evaluted_nodes = 0
+            self.number_of_evaluated_nodes = 0
             self.depth_dict = {}
 
             if algo == self.MINIMAX:
@@ -769,15 +773,25 @@ class Game:
                     (m, x, y) = self.alphabeta(max=True)
             end = time.time()
 
+            self.total_time += round(end - start, 7)
+            self.total_evaluated_nodes += self.number_of_evaluated_nodes
+
+            for key in self.depth_dict:
+                if str(int(key) + (self.turn_number - 1)) in self.total_depth_dict:
+                    self.total_depth_dict[key] += self.depth_dict[key]
+                else:
+                    self.total_depth_dict[str(int(key) + (self.turn_number - 1))] = self.depth_dict[key]
+
             f.write(F'Evaluation time: {round(end - start, 7)}s\n')
-            f.write(F'Number of evaluated nodes: {self.number_of_evaluted_nodes}\n')
+            f.write(F'Number of evaluated nodes: {self.number_of_evaluated_nodes}\n')
             f.write(F'Evaluations by depth: {self.depth_dict}\n')
 
-            if self.number_of_evaluted_nodes > 0:
+            if self.number_of_evaluated_nodes > 0:
                 sum = 0
                 for key in self.depth_dict:
                     sum += int(key) * self.depth_dict[key]
-                f.write(F'Average evaluation depth: {sum / self.number_of_evaluted_nodes}\n')
+                f.write(F'Average evaluation depth: {sum / self.number_of_evaluated_nodes}\n')
+                self.total_average_depths += sum / self.number_of_evaluated_nodes
 
             if (self.player_turn == 'X' and player_x == self.HUMAN) or \
                     (self.player_turn == 'O' and player_o == self.HUMAN):
@@ -851,6 +865,11 @@ def main():
         else:
             g.play(algo=Game.ALPHABETA, player_x=Game.AI, player_o=Game.AI, f = f)
 
+    f.write(F'Average heuristic time: {g.total_time/g.turn_number}\n')
+    f.write(F'Number of states evaluated: {g.total_evaluated_nodes}\n')
+    f.write(F'Average average depth: {g.total_average_depths/g.turn_number}\n')
+    f.write(F'Total number of nodes evaluated at every depth: {g.total_depth_dict}\n')
+    f.write(F'Total number of moves: {g.turn_number}')
     f.close()
 
 if __name__ == "__main__":
