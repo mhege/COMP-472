@@ -1163,67 +1163,35 @@ def ard_calculation(d_dict = None):
 def main():
     s = open("scoreboard.txt", "a")
 
-    for i in range(2):
-        wins_e1 = 0
-        wins_e2 = 0
-        total_turns = 0
-        total_time = 0
-        total_nodes = 0
-        total_depth_dict = {}
+    wins_e1 = 0
+    wins_e2 = 0
+    total_turns = 0
+    total_time = 0
+    total_nodes = 0
+    total_depth_dict = {}
 
+    for i in range(2):
         g = Game(recommend=True)
 
-        s.write("n={} b={} s={} t={}\n\n".format(g.board_size, g.num_blocs, g.line_size, g.max_AI_time))
-
-        if g.play_mode == 0:
-            s.write("Player 1: Human d={} a={} {}\n".format(g.max_depth[0], bool(g.algorithm),
-                                                            'e' + str(g.heuristics[0])))
-            s.write("Player 2: Human d={} a={} {}\n\n".format(g.max_depth[1], bool(g.algorithm),
-                                                            'e' + str(g.heuristics[1])))
-        elif g.play_mode == 1:
-            s.write("Player 1: Human d={} a={} {}\n".format(g.max_depth[0], bool(g.algorithm),
-                                                            'e' + str(g.heuristics[0])))
-            s.write(
-                "Player 2: AI d={} a={} {}\n\n".format(g.max_depth[1], bool(g.algorithm), 'e' + str(g.heuristics[1])))
-        elif g.play_mode == 2:
-            s.write(
-                "Player 1: AI d={} a={} {}\n".format(g.max_depth[0], bool(g.algorithm), 'e' + str(g.heuristics[0])))
-            s.write("Player 2: Human d={} a={} {}\n\n".format(g.max_depth[1], bool(g.algorithm),
-                                                            'e' + str(g.heuristics[1])))
-        elif g.play_mode == 3:
-            s.write(
-                "Player 1: AI d={} a={} {}\n".format(g.max_depth[0], bool(g.algorithm), 'e' + str(g.heuristics[0])))
-            s.write(
-                "Player 2: AI d={} a={} {}\n\n".format(g.max_depth[1], bool(g.algorithm), 'e' + str(g.heuristics[1])))
-
-
-        for j in range(10):
-            file_name = "gameTrace-{}{}{}{}_score.txt".format(g.board_size, g.num_blocs, g.line_size, int(g.max_AI_time))
+        for j in range(5):
+            file_name = "gameTrace-{}{}{}{}.txt".format(g.board_size, g.num_blocs, g.line_size, int(g.max_AI_time))
 
             f = open(file_name, "w")
             f.write("n={} b={} s={} t={}\n".format(g.board_size, g.num_blocs, g.line_size, g.max_AI_time))
             f.write("blocks={}\n\n".format(g.bloc_posi))
 
             if g.play_mode == 0:
-                f.write("Player 1: Human d={} a={} {}\n".format(g.max_depth[0], bool(g.algorithm),
-                                                                'e' + str(g.heuristics[0])))
-                f.write("Player 2: Human d={} a={} {}\n".format(g.max_depth[1], bool(g.algorithm),
-                                                                'e' + str(g.heuristics[1])))
+                f.write("Player 1: Human d={} a={}\n".format(g.max_depth[0], bool(g.algorithm)))
+                f.write("Player 2: Human d={} a={}\n".format(g.max_depth[1], bool(g.algorithm)))
             elif g.play_mode == 1:
-                f.write("Player 1: Human d={} a={} {}\n".format(g.max_depth[0], bool(g.algorithm),
-                                                                'e' + str(g.heuristics[0])))
-                f.write(
-                    "Player 2: AI d={} a={} {}\n".format(g.max_depth[1], bool(g.algorithm), 'e' + str(g.heuristics[1])))
+                f.write("Player 1: Human d={} a={}\n".format(g.max_depth[0], bool(g.algorithm)))
+                f.write("Player 2: AI d={} a={}\n".format(g.max_depth[1], bool(g.algorithm)))
             elif g.play_mode == 2:
-                f.write(
-                    "Player 1: AI d={} a={} {}\n".format(g.max_depth[0], bool(g.algorithm), 'e' + str(g.heuristics[0])))
-                f.write("Player 2: Human d={} a={} {}\n".format(g.max_depth[1], bool(g.algorithm),
-                                                                'e' + str(g.heuristics[1])))
+                f.write("Player 1: AI d={} a={}\n".format(g.max_depth[0], bool(g.algorithm)))
+                f.write("Player 2: Human d={} a={}\n".format(g.max_depth[1], bool(g.algorithm)))
             elif g.play_mode == 3:
-                f.write(
-                    "Player 1: AI d={} a={} {}\n".format(g.max_depth[0], bool(g.algorithm), 'e' + str(g.heuristics[0])))
-                f.write(
-                    "Player 2: AI d={} a={} {}\n".format(g.max_depth[1], bool(g.algorithm), 'e' + str(g.heuristics[1])))
+                f.write("Player 1: AI d={} a={}\n".format(g.max_depth[0], bool(g.algorithm)))
+                f.write("Player 2: AI d={} a={}\n".format(g.max_depth[1], bool(g.algorithm)))
 
             if Game.getAlgorithm(g) == 0:
                 if Game.getPlaymode(g) == Game.HH:
@@ -1267,31 +1235,46 @@ def main():
                 else:
                     total_depth_dict[key] = g.total_depth_dict[key]
 
-        s.write('10 games\n\n')
+    s.write("n={} b={} s={} t={}\n\n".format(g.board_size, g.num_blocs, g.line_size, g.max_AI_time))
 
-        if wins_e1 > 0 or wins_e2 > 0:
-            e1_win_percentage = round(wins_e1/(wins_e1 + wins_e2), 3)
-            e2_win_percentage = round(wins_e2 / (wins_e1 + wins_e2), 3)
-        else:
-            e1_win_percentage = 0
-            e2_win_percentage = 0
+    if g.play_mode == 0:
+        s.write("Player 1: Human d={} a={}\n".format(g.max_depth[0], bool(g.algorithm)))
+        s.write("Player 2: Human d={} a={}\n\n".format(g.max_depth[1], bool(g.algorithm)))
+    elif g.play_mode == 1:
+        s.write("Player 1: Human d={} a={}\n".format(g.max_depth[0], bool(g.algorithm)))
+        s.write("Player 2: AI d={} a={}\n\n".format(g.max_depth[1], bool(g.algorithm)))
+    elif g.play_mode == 2:
+        s.write("Player 1: AI d={} a={}\n".format(g.max_depth[0], bool(g.algorithm)))
+        s.write("Player 2: Human d={} a={}\n\n".format(g.max_depth[1], bool(g.algorithm)))
+    elif g.play_mode == 3:
+        s.write("Player 1: AI d={} a={}\n".format(g.max_depth[0], bool(g.algorithm)))
+        s.write("Player 2: AI d={} a={}\n\n".format(g.max_depth[1], bool(g.algorithm)))
 
-        s.write(F'Total wins for e1: {wins_e1} ({e1_win_percentage}%)\n')
-        s.write(F'Total wins for e2: {wins_e2} ({e2_win_percentage}%)\n\n')
-        s.write(F'Average heuristics time: {total_time / total_turns}\n')
-        s.write(F'Total evaluated nodes: {total_nodes}\n')
-        s.write(F'Evaluations by depth: {total_depth_dict}\n')
+    s.write('10 games\n\n')
 
-        if total_nodes > 0:
-            sum = 0
-            for key in total_depth_dict:
-                sum += int(key) * total_depth_dict[key]
-            s.write(F'Average evaluation depth: {sum / total_nodes}\n')
+    if wins_e1 > 0 or wins_e2 > 0:
+        e1_win_percentage = round(wins_e1/(wins_e1 + wins_e2), 3)
+        e2_win_percentage = round(wins_e2 / (wins_e1 + wins_e2), 3)
+    else:
+        e1_win_percentage = 0
+        e2_win_percentage = 0
 
-        ard = ard_calculation(d_dict = total_depth_dict)
+    s.write(F'Total wins for e1: {wins_e1} ({e1_win_percentage}%)\n')
+    s.write(F'Total wins for e2: {wins_e2} ({e2_win_percentage}%)\n\n')
+    s.write(F'Average heuristics time: {total_time / total_turns}\n')
+    s.write(F'Total evaluated nodes: {total_nodes}\n')
+    s.write(F'Evaluations by depth: {total_depth_dict}\n')
 
-        s.write(F'ARD: {ard}\n')
-        s.write(F'Average moves per game: {total_turns/10}\n\n')
+    if total_nodes > 0:
+        sum = 0
+        for key in total_depth_dict:
+            sum += int(key) * total_depth_dict[key]
+        s.write(F'Average evaluation depth: {sum / total_nodes}\n')
+
+    ard = ard_calculation(d_dict = total_depth_dict)
+
+    s.write(F'ARD: {ard}\n')
+    s.write(F'Average moves per game: {total_turns/10}\n\n')
 
     s.close()
 

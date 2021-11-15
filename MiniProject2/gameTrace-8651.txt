@@ -1,8 +1,8 @@
 n=8 b=6 s=5 t=1.0
 blocks=[[2, 3], [6, 0], [4, 0], [6, 6], [7, 2], [3, 3]]
 
-Player 1: AI d=6 a=True e1
-Player 2: AI d=6 a=True e1
+Player 1: AI d=6 a=True
+Player 2: AI d=6 a=True
 
 Move #1
 
@@ -15,995 +15,995 @@ Move #1
 ......*.
 ........
 
-Evaluation time: 0.953074s
-Number of evaluated nodes: 68895
-Evaluations by depth: {'5': 68836, '3': 23, '1': 36}
-Average evaluation depth: 4.997242180129182
-ARD: 9.243421052631579
-Player X under AI control plays: x = A, y = 0
+Evaluation time: 0.9520211s
+Number of evaluated nodes: 83161
+Evaluations by depth: {'5': 83105, '4': 1, '3': 20, '2': 1, '1': 34}
+Average evaluation depth: 4.997835523863349
+ARD: 17.648175837320576
+Player X under AI control plays: x = F, y = 2
 
 Move #2
 
-X...*.*.
+....*.*.
 ........
-.......*
+.....X.*
 ..**....
 ........
 ........
 ......*.
 ........
 
-Evaluation time: 0.953125s
-Number of evaluated nodes: 102126
-Evaluations by depth: {'5': 102080, '3': 21, '1': 25}
-Average evaluation depth: 4.998609560738696
-ARD: 9.316498316498315
-Player O under AI control plays: x = A, y = 1
+Evaluation time: 0.9519658s
+Number of evaluated nodes: 98611
+Evaluations by depth: {'5': 98565, '3': 22, '1': 24}
+Average evaluation depth: 4.998580280090456
+ARD: 9.321070234113712
+Player O under AI control plays: x = A, y = 0
 
 Move #3
 
-X...*.*.
-O.......
-.......*
+O...*.*.
+........
+.....X.*
 ..**....
 ........
 ........
 ......*.
 ........
 
-Evaluation time: 0.953126s
-Number of evaluated nodes: 101236
-Evaluations by depth: {'5': 101155, '3': 48, '1': 33}
-Average evaluation depth: 4.997747836737919
-ARD: 9.2134110787172
-Player X under AI control plays: x = A, y = 2
+Evaluation time: 0.951998s
+Number of evaluated nodes: 83313
+Evaluations by depth: {'5': 83278, '4': 3, '3': 27, '2': 2, '1': 3}
+Average evaluation depth: 4.999099780346405
+ARD: 18.29655172413793
+Player X under AI control plays: x = A, y = 7
 
 Move #4
 
-X...*.*.
-O.......
-X......*
+O...*.*.
+........
+.....X.*
 ..**....
 ........
 ........
 ......*.
-........
+X.......
 
-Evaluation time: 0.953119s
-Number of evaluated nodes: 101842
-Evaluations by depth: {'5': 101775, '3': 26, '1': 41}
-Average evaluation depth: 4.997879067575264
-ARD: 9.215331610680447
-Player O under AI control plays: x = A, y = 7
+Evaluation time: 0.0569999s
+Number of evaluated nodes: 3946
+Evaluations by depth: {'5': 3946}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = A, y = 1
 
 Move #5
 
-X...*.*.
+O...*.*.
 O.......
-X......*
+.....X.*
 ..**....
 ........
 ........
 ......*.
-O.......
+X.......
 
-Evaluation time: 0.953126s
-Number of evaluated nodes: 101358
-Evaluations by depth: {'5': 101293, '3': 26, '1': 39}
-Average evaluation depth: 4.9979478679531955
-ARD: 9.222222222222223
+Evaluation time: 0.9510009s
+Number of evaluated nodes: 82396
+Evaluations by depth: {'5': 82370, '3': 22, '2': 1, '1': 3}
+Average evaluation depth: 4.999283945822612
+ARD: 13.857487922705316
 Player X under AI control plays: x = B, y = 0
 
 Move #6
 
-XX..*.*.
+OX..*.*.
 O.......
-X......*
+.....X.*
 ..**....
 ........
 ........
 ......*.
-O.......
+X.......
 
-Evaluation time: 0.953124s
-Number of evaluated nodes: 101202
-Evaluations by depth: {'5': 101161, '3': 3, '2': 1, '1': 37}
-Average evaluation depth: 4.998448647259935
-ARD: 13.225
-Player O under AI control plays: x = B, y = 1
+Evaluation time: 0.036s
+Number of evaluated nodes: 847
+Evaluations by depth: {'5': 847}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = A, y = 2
 
 Move #7
 
-XX..*.*.
-OO......
-X......*
+OX..*.*.
+O.......
+O....X.*
 ..**....
 ........
 ........
 ......*.
-O.......
+X.......
 
-Evaluation time: 0.9531271s
-Number of evaluated nodes: 98741
-Evaluations by depth: {'5': 98678, '3': 26, '2': 1, '1': 36}
-Average evaluation depth: 4.997984626446967
-ARD: 12.648306426084204
-Player X under AI control plays: x = B, y = 2
+Evaluation time: 0.9529619s
+Number of evaluated nodes: 82177
+Evaluations by depth: {'5': 82129, '3': 37, '2': 1, '1': 10}
+Average evaluation depth: 4.998576243961206
+ARD: 13.049932523616732
+Player X under AI control plays: x = C, y = 0
 
 Move #8
 
-XX..*.*.
-OO......
-XX.....*
+OXX.*.*.
+O.......
+O....X.*
 ..**....
 ........
 ........
 ......*.
-O.......
+X.......
 
-Evaluation time: 0.9531279s
-Number of evaluated nodes: 97696
-Evaluations by depth: {'5': 97626, '3': 32, '1': 38}
-Average evaluation depth: 4.9977890599410415
-ARD: 9.212121212121213
-Player O under AI control plays: x = B, y = 7
+Evaluation time: 0.0250299s
+Number of evaluated nodes: 2398
+Evaluations by depth: {'5': 2398}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = A, y = 4
 
 Move #9
 
-XX..*.*.
-OO......
-XX.....*
-..**....
-........
-........
-......*.
-OO......
-
-Evaluation time: 0.953124s
-Number of evaluated nodes: 96239
-Evaluations by depth: {'5': 96157, '3': 44, '2': 1, '1': 37}
-Average evaluation depth: 4.997516599299661
-ARD: 12.602407407407407
-Player X under AI control plays: x = C, y = 0
-
-Move #10
-
-XXX.*.*.
-OO......
-XX.....*
-..**....
-........
-........
-......*.
-OO......
-
-Evaluation time: 0.9531231s
-Number of evaluated nodes: 95853
-Evaluations by depth: {'5': 95786, '3': 13, '2': 14, '1': 40}
-Average evaluation depth: 4.997621357703984
-ARD: 11.57392026578073
-Player O under AI control plays: x = C, y = 1
-
-Move #11
-
-XXX.*.*.
-OOO.....
-XX.....*
-..**....
-........
-........
-......*.
-OO......
-
-Evaluation time: 0.9531319s
-Number of evaluated nodes: 91629
-Evaluations by depth: {'5': 91525, '4': 15, '3': 35, '2': 15, '1': 39}
-Average evaluation depth: 4.996878717436619
-ARD: 15.73055031775962
-Player X under AI control plays: x = F, y = 0
-
-Move #12
-
-XXX.*X*.
-OOO.....
-XX.....*
-..**....
-........
-........
-......*.
-OO......
-
-Evaluation time: 0.9531231s
-Number of evaluated nodes: 92369
-Evaluations by depth: {'5': 92290, '4': 22, '2': 19, '1': 38}
-Average evaluation depth: 4.99749916097392
-ARD: 12.485683987274657
-Player O under AI control plays: x = F, y = 6
-
-Move #13
-
-XXX.*X*.
-OOO.....
-XX.....*
-..**....
-........
-........
-.....O*.
-OO......
-
-Evaluation time: 0.9531169s
-Number of evaluated nodes: 89433
-Evaluations by depth: {'5': 89342, '3': 19, '2': 35, '1': 37}
-Average evaluation depth: 4.996746167522056
-ARD: 11.391081081081081
-Player X under AI control plays: x = F, y = 1
-
-Move #14
-
-XXX.*X*.
-OOO..X..
-XX.....*
-..**....
-........
-........
-.....O*.
-OO......
-
-Evaluation time: 0.953131s
-Number of evaluated nodes: 89362
-Evaluations by depth: {'5': 89264, '4': 4, '3': 32, '2': 24, '1': 38}
-Average evaluation depth: 4.996732391844408
-ARD: 15.77788152297956
-Player O under AI control plays: x = H, y = 0
-
-Move #15
-
-XXX.*X*O
-OOO..X..
-XX.....*
-..**....
-........
-........
-.....O*.
-OO......
-
-Evaluation time: 0.953125s
-Number of evaluated nodes: 87941
-Evaluations by depth: {'5': 87873, '4': 3, '2': 34, '1': 31}
-Average evaluation depth: 4.997395981396618
-ARD: 12.642769607843139
-Player X under AI control plays: x = C, y = 7
-
-Move #16
-
-XXX.*X*O
-OOO..X..
-XX.....*
-..**....
-........
-........
-.....O*.
-OOX.....
-
-Evaluation time: 0.953125s
-Number of evaluated nodes: 88749
-Evaluations by depth: {'5': 88684, '4': 3, '3': 29, '1': 33}
-Average evaluation depth: 4.997825327609325
-ARD: 13.614695340501793
-Player O under AI control plays: x = A, y = 4
-
-Move #17
-
-XXX.*X*O
-OOO..X..
-XX.....*
+OXX.*.*.
+O.......
+O....X.*
 ..**....
 O.......
 ........
-.....O*.
-OOX.....
+......*.
+X.......
 
-Evaluation time: 0.9531271s
-Number of evaluated nodes: 89804
-Evaluations by depth: {'5': 89754, '3': 38, '1': 12}
-Average evaluation depth: 4.998619215179724
-ARD: 9.483516483516484
-Player X under AI control plays: x = H, y = 1
-
-Move #18
-
-XXX.*X*O
-OOO..X.X
-XX.....*
-..**....
-O.......
-........
-.....O*.
-OOX.....
-
-Evaluation time: 0.9531229s
-Number of evaluated nodes: 88402
-Evaluations by depth: {'5': 88343, '3': 32, '1': 27}
-Average evaluation depth: 4.998054342661931
-ARD: 9.269592476489029
-Player O under AI control plays: x = A, y = 5
-
-Move #19
-
-XXX.*X*O
-OOO..X.X
-XX.....*
-..**....
-O.......
-O.......
-.....O*.
-OOX.....
-
-Evaluation time: 0.171874s
-Number of evaluated nodes: 14776
-Evaluations by depth: {'5': 14776}
+Evaluation time: 0.0479989s
+Number of evaluated nodes: 2927
+Evaluations by depth: {'5': 2927}
 Average evaluation depth: 5.0
 ARD: 5.0
 Player X under AI control plays: x = A, y = 3
 
-Move #20
+Move #10
 
-XXX.*X*O
-OOO..X.X
-XX.....*
+OXX.*.*.
+O.......
+O....X.*
 X.**....
 O.......
-O.......
-.....O*.
-OOX.....
+........
+......*.
+X.......
 
-Evaluation time: 0.8906209s
-Number of evaluated nodes: 80338
-Evaluations by depth: {'5': 80338}
+Evaluation time: 0.0360012s
+Number of evaluated nodes: 2208
+Evaluations by depth: {'5': 2208}
 Average evaluation depth: 5.0
 ARD: 5.0
-Player O under AI control plays: x = A, y = 6
+Player O under AI control plays: x = A, y = 5
 
-Move #21
+Move #11
 
-XXX.*X*O
-OOO..X.X
-XX.....*
+OXX.*.*.
+O.......
+O....X.*
 X.**....
 O.......
 O.......
-O....O*.
-OOX.....
+......*.
+X.......
 
-Evaluation time: 0.95313s
-Number of evaluated nodes: 86713
-Evaluations by depth: {'5': 86681, '3': 16, '1': 16}
-Average evaluation depth: 4.998892899565233
-ARD: 9.457516339869281
-Player X under AI control plays: x = B, y = 3
+Evaluation time: 0.720999s
+Number of evaluated nodes: 58545
+Evaluations by depth: {'5': 58545}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = A, y = 6
 
-Move #22
+Move #12
 
-XXX.*X*O
-OOO..X.X
-XX.....*
-XX**....
+OXX.*.*.
+O.......
+O....X.*
+X.**....
 O.......
 O.......
-O....O*.
-OOX.....
+X.....*.
+X.......
 
-Evaluation time: 0.046875s
-Number of evaluated nodes: 3842
-Evaluations by depth: {'5': 3842}
+Evaluation time: 0.036s
+Number of evaluated nodes: 2165
+Evaluations by depth: {'5': 2165}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = B, y = 1
+
+Move #13
+
+OXX.*.*.
+OO......
+O....X.*
+X.**....
+O.......
+O.......
+X.....*.
+X.......
+
+Evaluation time: 0.9510009s
+Number of evaluated nodes: 76188
+Evaluations by depth: {'5': 76162, '3': 1, '2': 24, '1': 1}
+Average evaluation depth: 4.998976216727043
+ARD: 14.240384615384617
+Player X under AI control plays: x = B, y = 4
+
+Move #14
+
+OXX.*.*.
+OO......
+O....X.*
+X.**....
+OX......
+O.......
+X.....*.
+X.......
+
+Evaluation time: 0.0319991s
+Number of evaluated nodes: 1866
+Evaluations by depth: {'5': 1866}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = B, y = 2
+
+Move #15
+
+OXX.*.*.
+OO......
+OO...X.*
+X.**....
+OX......
+O.......
+X.....*.
+X.......
+
+Evaluation time: 0.9530001s
+Number of evaluated nodes: 75635
+Evaluations by depth: {'5': 75591, '3': 36, '1': 8}
+Average evaluation depth: 4.998624975209889
+ARD: 9.65945945945946
+Player X under AI control plays: x = D, y = 0
+
+Move #16
+
+OXXX*.*.
+OO......
+OO...X.*
+X.**....
+OX......
+O.......
+X.....*.
+X.......
+
+Evaluation time: 0.029999s
+Number of evaluated nodes: 1818
+Evaluations by depth: {'5': 1818}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = B, y = 3
+
+Move #17
+
+OXXX*.*.
+OO......
+OO...X.*
+XO**....
+OX......
+O.......
+X.....*.
+X.......
+
+Evaluation time: 0.9519999s
+Number of evaluated nodes: 74154
+Evaluations by depth: {'5': 74130, '4': 1, '3': 3, '1': 20}
+Average evaluation depth: 4.998826765919572
+ARD: 14.643478260869564
+Player X under AI control plays: x = E, y = 7
+
+Move #18
+
+OXXX*.*.
+OO......
+OO...X.*
+XO**....
+OX......
+O.......
+X.....*.
+X...X...
+
+Evaluation time: 0.1709991s
+Number of evaluated nodes: 11511
+Evaluations by depth: {'5': 11511}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = C, y = 5
+
+Move #19
+
+OXXX*.*.
+OO......
+OO...X.*
+XO**....
+OX......
+O.O.....
+X.....*.
+X...X...
+
+Evaluation time: 0.5709991s
+Number of evaluated nodes: 42017
+Evaluations by depth: {'5': 42017}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = B, y = 7
+
+Move #20
+
+OXXX*.*.
+OO......
+OO...X.*
+XO**....
+OX......
+O.O.....
+X.....*.
+XX..X...
+
+Evaluation time: 0.6629999s
+Number of evaluated nodes: 56469
+Evaluations by depth: {'5': 56469}
 Average evaluation depth: 5.0
 ARD: 5.0
 Player O under AI control plays: x = B, y = 5
 
-Move #23
+Move #21
 
-XXX.*X*O
-OOO..X.X
-XX.....*
-XX**....
-O.......
+OXXX*.*.
 OO......
-O....O*.
-OOX.....
+OO...X.*
+XO**....
+OX......
+OOO.....
+X.....*.
+XX..X...
 
-Evaluation time: 0.609375s
-Number of evaluated nodes: 54934
-Evaluations by depth: {'5': 54934}
+Evaluation time: 0.6409988s
+Number of evaluated nodes: 47061
+Evaluations by depth: {'5': 47061}
 Average evaluation depth: 5.0
 ARD: 5.0
-Player X under AI control plays: x = B, y = 4
+Player X under AI control plays: x = C, y = 7
+
+Move #22
+
+OXXX*.*.
+OO......
+OO...X.*
+XO**....
+OX......
+OOO.....
+X.....*.
+XXX.X...
+
+Evaluation time: 0.7650001s
+Number of evaluated nodes: 55967
+Evaluations by depth: {'5': 55967}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = D, y = 7
+
+Move #23
+
+OXXX*.*.
+OO......
+OO...X.*
+XO**....
+OX......
+OOO.....
+X.....*.
+XXXOX...
+
+Evaluation time: 0.9520001s
+Number of evaluated nodes: 64179
+Evaluations by depth: {'5': 64168, '3': 3, '2': 7, '1': 1}
+Average evaluation depth: 4.999516975957868
+ARD: 14.0
+Player X under AI control plays: x = E, y = 6
 
 Move #24
 
-XXX.*X*O
-OOO..X.X
-XX.....*
-XX**....
-OX......
+OXXX*.*.
 OO......
-O....O*.
-OOX.....
+OO...X.*
+XO**....
+OX......
+OOO.....
+X...X.*.
+XXXOX...
 
-Evaluation time: 0.03125s
-Number of evaluated nodes: 1483
-Evaluations by depth: {'5': 1483}
+Evaluation time: 0.020999s
+Number of evaluated nodes: 1088
+Evaluations by depth: {'5': 1088}
 Average evaluation depth: 5.0
 ARD: 5.0
 Player O under AI control plays: x = B, y = 6
 
 Move #25
 
-XXX.*X*O
-OOO..X.X
-XX.....*
-XX**....
+OXXX*.*.
+OO......
+OO...X.*
+XO**....
 OX......
-OO......
-OO...O*.
-OOX.....
-
-Evaluation time: 0.640625s
-Number of evaluated nodes: 56728
-Evaluations by depth: {'5': 56728}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player X under AI control plays: x = C, y = 2
-
-Move #26
-
-XXX.*X*O
-OOO..X.X
-XXX....*
-XX**....
-OX......
-OO......
-OO...O*.
-OOX.....
-
-Evaluation time: 0.0937521s
-Number of evaluated nodes: 7801
-Evaluations by depth: {'5': 7801}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player O under AI control plays: x = D, y = 1
-
-Move #27
-
-XXX.*X*O
-OOOO.X.X
-XXX....*
-XX**....
-OX......
-OO......
-OO...O*.
-OOX.....
-
-Evaluation time: 0.48438s
-Number of evaluated nodes: 42452
-Evaluations by depth: {'5': 42452}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player X under AI control plays: x = C, y = 4
-
-Move #28
-
-XXX.*X*O
-OOOO.X.X
-XXX....*
-XX**....
-OXX.....
-OO......
-OO...O*.
-OOX.....
-
-Evaluation time: 0.0781221s
-Number of evaluated nodes: 5678
-Evaluations by depth: {'5': 5678}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player O under AI control plays: x = C, y = 5
-
-Move #29
-
-XXX.*X*O
-OOOO.X.X
-XXX....*
-XX**....
-OXX.....
 OOO.....
-OO...O*.
-OOX.....
+XO..X.*.
+XXXOX...
 
-Evaluation time: 0.4843779s
-Number of evaluated nodes: 37548
-Evaluations by depth: {'5': 37548}
+Evaluation time: 0.1040311s
+Number of evaluated nodes: 5255
+Evaluations by depth: {'5': 5255}
 Average evaluation depth: 5.0
 ARD: 5.0
 Player X under AI control plays: x = C, y = 6
 
-Move #30
+Move #26
 
-XXX.*X*O
-OOOO.X.X
-XXX....*
-XX**....
-OXX.....
+OXXX*.*.
+OO......
+OO...X.*
+XO**....
+OX......
 OOO.....
-OOX..O*.
-OOX.....
+XOX.X.*.
+XXXOX...
 
-Evaluation time: 0.031245s
-Number of evaluated nodes: 3485
-Evaluations by depth: {'5': 3485}
+Evaluation time: 0.01897s
+Number of evaluated nodes: 1086
+Evaluations by depth: {'5': 1086}
 Average evaluation depth: 5.0
 ARD: 5.0
-Player O under AI control plays: x = D, y = 0
+Player O under AI control plays: x = C, y = 1
+
+Move #27
+
+OXXX*.*.
+OOO.....
+OO...X.*
+XO**....
+OX......
+OOO.....
+XOX.X.*.
+XXXOX...
+
+Evaluation time: 0.1209991s
+Number of evaluated nodes: 6455
+Evaluations by depth: {'5': 6455}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = D, y = 6
+
+Move #28
+
+OXXX*.*.
+OOO.....
+OO...X.*
+XO**....
+OX......
+OOO.....
+XOXXX.*.
+XXXOX...
+
+Evaluation time: 0.0189979s
+Number of evaluated nodes: 1122
+Evaluations by depth: {'5': 1122}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = C, y = 2
+
+Move #29
+
+OXXX*.*.
+OOO.....
+OOO..X.*
+XO**....
+OX......
+OOO.....
+XOXXX.*.
+XXXOX...
+
+Evaluation time: 0.0250049s
+Number of evaluated nodes: 1348
+Evaluations by depth: {'5': 1348}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = C, y = 4
+
+Move #30
+
+OXXX*.*.
+OOO.....
+OOO..X.*
+XO**....
+OXX.....
+OOO.....
+XOXXX.*.
+XXXOX...
+
+Evaluation time: 0.0220008s
+Number of evaluated nodes: 1280
+Evaluations by depth: {'5': 1280}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = D, y = 1
 
 Move #31
 
-XXXO*X*O
-OOOO.X.X
-XXX....*
-XX**....
+OXXX*.*.
+OOOO....
+OOO..X.*
+XO**....
 OXX.....
 OOO.....
-OOX..O*.
-OOX.....
+XOXXX.*.
+XXXOX...
 
-Evaluation time: 0.3281341s
-Number of evaluated nodes: 26276
-Evaluations by depth: {'5': 26276}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player X under AI control plays: x = D, y = 4
-
-Move #32
-
-XXXO*X*O
-OOOO.X.X
-XXX....*
-XX**....
-OXXX....
-OOO.....
-OOX..O*.
-OOX.....
-
-Evaluation time: 0.04687s
-Number of evaluated nodes: 3235
-Evaluations by depth: {'5': 3235}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player O under AI control plays: x = D, y = 5
-
-Move #33
-
-XXXO*X*O
-OOOO.X.X
-XXX....*
-XX**....
-OXXX....
-OOOO....
-OOX..O*.
-OOX.....
-
-Evaluation time: 0.14062s
-Number of evaluated nodes: 11687
-Evaluations by depth: {'5': 11687}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player X under AI control plays: x = G, y = 4
-
-Move #34
-
-XXXO*X*O
-OOOO.X.X
-XXX....*
-XX**....
-OXXX..X.
-OOOO....
-OOX..O*.
-OOX.....
-
-Evaluation time: 0.015631s
-Number of evaluated nodes: 510
-Evaluations by depth: {'5': 510}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player O under AI control plays: x = D, y = 2
-
-Move #35
-
-XXXO*X*O
-OOOO.X.X
-XXXO...*
-XX**....
-OXXX..X.
-OOOO....
-OOX..O*.
-OOX.....
-
-Evaluation time: 0.0781271s
-Number of evaluated nodes: 7147
-Evaluations by depth: {'5': 7147}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player X under AI control plays: x = D, y = 7
-
-Move #36
-
-XXXO*X*O
-OOOO.X.X
-XXXO...*
-XX**....
-OXXX..X.
-OOOO....
-OOX..O*.
-OOXX....
-
-Evaluation time: 0.0s
-Number of evaluated nodes: 27
-Evaluations by depth: {'5': 27}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player O under AI control plays: x = D, y = 6
-
-Move #37
-
-XXXO*X*O
-OOOO.X.X
-XXXO...*
-XX**....
-OXXX..X.
-OOOO....
-OOXO.O*.
-OOXX....
-
-Evaluation time: 0.0156238s
-Number of evaluated nodes: 368
-Evaluations by depth: {'5': 368}
+Evaluation time: 0.070997s
+Number of evaluated nodes: 3133
+Evaluations by depth: {'5': 3133}
 Average evaluation depth: 5.0
 ARD: 5.0
 Player X under AI control plays: x = E, y = 1
 
-Move #38
+Move #32
 
-XXXO*X*O
-OOOOXX.X
-XXXO...*
-XX**....
-OXXX..X.
-OOOO....
-OOXO.O*.
-OOXX....
+OXXX*.*.
+OOOOX...
+OOO..X.*
+XO**....
+OXX.....
+OOO.....
+XOXXX.*.
+XXXOX...
 
-Evaluation time: 0.0s
-Number of evaluated nodes: 309
-Evaluations by depth: {'5': 309}
+Evaluation time: 0.0200002s
+Number of evaluated nodes: 937
+Evaluations by depth: {'5': 937}
 Average evaluation depth: 5.0
 ARD: 5.0
-Player O under AI control plays: x = E, y = 2
+Player O under AI control plays: x = D, y = 2
 
-Move #39
+Move #33
 
-XXXO*X*O
-OOOOXX.X
-XXXOO..*
-XX**....
-OXXX..X.
-OOOO....
-OOXO.O*.
-OOXX....
+OXXX*.*.
+OOOOX...
+OOOO.X.*
+XO**....
+OXX.....
+OOO.....
+XOXXX.*.
+XXXOX...
 
-Evaluation time: 0.062499s
-Number of evaluated nodes: 5146
-Evaluations by depth: {'5': 5146}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player X under AI control plays: x = E, y = 3
-
-Move #40
-
-XXXO*X*O
-OOOOXX.X
-XXXOO..*
-XX**X...
-OXXX..X.
-OOOO....
-OOXO.O*.
-OOXX....
-
-Evaluation time: 0.015625s
-Number of evaluated nodes: 46
-Evaluations by depth: {'5': 46}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player O under AI control plays: x = E, y = 4
-
-Move #41
-
-XXXO*X*O
-OOOOXX.X
-XXXOO..*
-XX**X...
-OXXXO.X.
-OOOO....
-OOXO.O*.
-OOXX....
-
-Evaluation time: 0.0s
-Number of evaluated nodes: 358
-Evaluations by depth: {'5': 358}
+Evaluation time: 0.0499651s
+Number of evaluated nodes: 2051
+Evaluations by depth: {'5': 2051}
 Average evaluation depth: 5.0
 ARD: 5.0
 Player X under AI control plays: x = E, y = 5
 
-Move #42
+Move #34
 
-XXXO*X*O
-OOOOXX.X
-XXXOO..*
-XX**X...
-OXXXO.X.
+OXXX*.*.
 OOOOX...
-OOXO.O*.
-OOXX....
+OOOO.X.*
+XO**....
+OXX.....
+OOO.X...
+XOXXX.*.
+XXXOX...
 
-Evaluation time: 0.015625s
-Number of evaluated nodes: 1346
-Evaluations by depth: {'5': 1346}
+Evaluation time: 0.011035s
+Number of evaluated nodes: 528
+Evaluations by depth: {'5': 528}
 Average evaluation depth: 5.0
 ARD: 5.0
-Player O under AI control plays: x = F, y = 2
+Player O under AI control plays: x = D, y = 4
+
+Move #35
+
+OXXX*.*.
+OOOOX...
+OOOO.X.*
+XO**....
+OXXO....
+OOO.X...
+XOXXX.*.
+XXXOX...
+
+Evaluation time: 0.0299671s
+Number of evaluated nodes: 1615
+Evaluations by depth: {'5': 1615}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = E, y = 2
+
+Move #36
+
+OXXX*.*.
+OOOOX...
+OOOOXX.*
+XO**....
+OXXO....
+OOO.X...
+XOXXX.*.
+XXXOX...
+
+Evaluation time: 0.368s
+Number of evaluated nodes: 21261
+Evaluations by depth: {'5': 21261}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = F, y = 4
+
+Move #37
+
+OXXX*.*.
+OOOOX...
+OOOOXX.*
+XO**....
+OXXO.O..
+OOO.X...
+XOXXX.*.
+XXXOX...
+
+Evaluation time: 0.016s
+Number of evaluated nodes: 384
+Evaluations by depth: {'5': 384}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = E, y = 3
+
+Move #38
+
+OXXX*.*.
+OOOOX...
+OOOOXX.*
+XO**X...
+OXXO.O..
+OOO.X...
+XOXXX.*.
+XXXOX...
+
+Evaluation time: 0.0589988s
+Number of evaluated nodes: 3738
+Evaluations by depth: {'5': 3738}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = E, y = 4
+
+Move #39
+
+OXXX*.*.
+OOOOX...
+OOOOXX.*
+XO**X...
+OXXOOO..
+OOO.X...
+XOXXX.*.
+XXXOX...
+
+Evaluation time: 0.4969981s
+Number of evaluated nodes: 28221
+Evaluations by depth: {'5': 28221}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = H, y = 4
+
+Move #40
+
+OXXX*.*.
+OOOOX...
+OOOOXX.*
+XO**X...
+OXXOOO.X
+OOO.X...
+XOXXX.*.
+XXXOX...
+
+Evaluation time: 0.2070179s
+Number of evaluated nodes: 10923
+Evaluations by depth: {'5': 10923}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = G, y = 3
+
+Move #41
+
+OXXX*.*.
+OOOOX...
+OOOOXX.*
+XO**X.O.
+OXXOOO.X
+OOO.X...
+XOXXX.*.
+XXXOX...
+
+Evaluation time: 0.0610001s
+Number of evaluated nodes: 3861
+Evaluations by depth: {'5': 3861}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = F, y = 1
+
+Move #42
+
+OXXX*.*.
+OOOOXX..
+OOOOXX.*
+XO**X.O.
+OXXOOO.X
+OOO.X...
+XOXXX.*.
+XXXOX...
+
+Evaluation time: 0.115001s
+Number of evaluated nodes: 7940
+Evaluations by depth: {'5': 7940}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = F, y = 0
 
 Move #43
 
-XXXO*X*O
-OOOOXX.X
-XXXOOO.*
-XX**X...
-OXXXO.X.
-OOOOX...
-OOXO.O*.
-OOXX....
+OXXX*O*.
+OOOOXX..
+OOOOXX.*
+XO**X.O.
+OXXOOO.X
+OOO.X...
+XOXXX.*.
+XXXOX...
 
-Evaluation time: 0.062499s
-Number of evaluated nodes: 4420
-Evaluations by depth: {'5': 4420}
+Evaluation time: 0.059998s
+Number of evaluated nodes: 3350
+Evaluations by depth: {'5': 3350}
 Average evaluation depth: 5.0
 ARD: 5.0
-Player X under AI control plays: x = E, y = 6
+Player X under AI control plays: x = G, y = 1
 
 Move #44
 
-XXXO*X*O
-OOOOXX.X
-XXXOOO.*
-XX**X...
-OXXXO.X.
-OOOOX...
-OOXOXO*.
-OOXX....
+OXXX*O*.
+OOOOXXX.
+OOOOXX.*
+XO**X.O.
+OXXOOO.X
+OOO.X...
+XOXXX.*.
+XXXOX...
 
-Evaluation time: 0.046875s
-Number of evaluated nodes: 2862
-Evaluations by depth: {'5': 2862}
+Evaluation time: 0.1079991s
+Number of evaluated nodes: 7063
+Evaluations by depth: {'5': 7063}
 Average evaluation depth: 5.0
 ARD: 5.0
 Player O under AI control plays: x = F, y = 3
 
 Move #45
 
-XXXO*X*O
-OOOOXX.X
-XXXOOO.*
-XX**XO..
-OXXXO.X.
-OOOOX...
-OOXOXO*.
-OOXX....
+OXXX*O*.
+OOOOXXX.
+OOOOXX.*
+XO**XOO.
+OXXOOO.X
+OOO.X...
+XOXXX.*.
+XXXOX...
 
-Evaluation time: 0.093749s
-Number of evaluated nodes: 6004
-Evaluations by depth: {'5': 6004}
+Evaluation time: 0.0549989s
+Number of evaluated nodes: 3145
+Evaluations by depth: {'5': 3145}
 Average evaluation depth: 5.0
 ARD: 5.0
-Player X under AI control plays: x = E, y = 7
+Player X under AI control plays: x = G, y = 4
 
 Move #46
 
-XXXO*X*O
-OOOOXX.X
-XXXOOO.*
-XX**XO..
-OXXXO.X.
-OOOOX...
-OOXOXO*.
-OOXXX...
+OXXX*O*.
+OOOOXXX.
+OOOOXX.*
+XO**XOO.
+OXXOOOXX
+OOO.X...
+XOXXX.*.
+XXXOX...
 
-Evaluation time: 0.031255s
-Number of evaluated nodes: 2297
-Evaluations by depth: {'5': 2297}
+Evaluation time: 0.043s
+Number of evaluated nodes: 2675
+Evaluations by depth: {'5': 2675}
 Average evaluation depth: 5.0
 ARD: 5.0
-Player O under AI control plays: x = F, y = 4
+Player O under AI control plays: x = F, y = 6
 
 Move #47
 
-XXXO*X*O
-OOOOXX.X
-XXXOOO.*
-XX**XO..
-OXXXOOX.
-OOOOX...
-OOXOXO*.
-OOXXX...
+OXXX*O*.
+OOOOXXX.
+OOOOXX.*
+XO**XOO.
+OXXOOOXX
+OOO.X...
+XOXXXO*.
+XXXOX...
 
-Evaluation time: 0.0156169s
-Number of evaluated nodes: 564
-Evaluations by depth: {'5': 564}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player X under AI control plays: x = F, y = 5
-
-Move #48
-
-XXXO*X*O
-OOOOXX.X
-XXXOOO.*
-XX**XO..
-OXXXOOX.
-OOOOXX..
-OOXOXO*.
-OOXXX...
-
-Evaluation time: 0.0156331s
-Number of evaluated nodes: 1602
-Evaluations by depth: {'5': 1602}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player O under AI control plays: x = H, y = 3
-
-Move #49
-
-XXXO*X*O
-OOOOXX.X
-XXXOOO.*
-XX**XO.O
-OXXXOOX.
-OOOOXX..
-OOXOXO*.
-OOXXX...
-
-Evaluation time: 0.0156219s
-Number of evaluated nodes: 843
-Evaluations by depth: {'5': 843}
+Evaluation time: 0.0289991s
+Number of evaluated nodes: 1488
+Evaluations by depth: {'5': 1488}
 Average evaluation depth: 5.0
 ARD: 5.0
 Player X under AI control plays: x = F, y = 7
 
+Move #48
+
+OXXX*O*.
+OOOOXXX.
+OOOOXX.*
+XO**XOO.
+OXXOOOXX
+OOO.X...
+XOXXXO*.
+XXXOXX..
+
+Evaluation time: 0.021997s
+Number of evaluated nodes: 1330
+Evaluations by depth: {'5': 1330}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = D, y = 5
+
+Move #49
+
+OXXX*O*.
+OOOOXXX.
+OOOOXX.*
+XO**XOO.
+OXXOOOXX
+OOOOX...
+XOXXXO*.
+XXXOXX..
+
+Evaluation time: 0.0030029s
+Number of evaluated nodes: 125
+Evaluations by depth: {'5': 125}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = F, y = 5
+
 Move #50
 
-XXXO*X*O
-OOOOXX.X
-XXXOOO.*
-XX**XO.O
-OXXXOOX.
+OXXX*O*.
+OOOOXXX.
+OOOOXX.*
+XO**XOO.
+OXXOOOXX
 OOOOXX..
-OOXOXO*.
-OOXXXX..
+XOXXXO*.
+XXXOXX..
 
-Evaluation time: 0.0156221s
-Number of evaluated nodes: 645
-Evaluations by depth: {'5': 645}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player O under AI control plays: x = G, y = 7
-
-Move #51
-
-XXXO*X*O
-OOOOXX.X
-XXXOOO.*
-XX**XO.O
-OXXXOOX.
-OOOOXX..
-OOXOXO*.
-OOXXXXO.
-
-Evaluation time: 0.0s
-Number of evaluated nodes: 226
-Evaluations by depth: {'5': 226}
-Average evaluation depth: 5.0
-ARD: 5.0
-Player X under AI control plays: x = G, y = 1
-
-Move #52
-
-XXXO*X*O
-OOOOXXXX
-XXXOOO.*
-XX**XO.O
-OXXXOOX.
-OOOOXX..
-OOXOXO*.
-OOXXXXO.
-
-Evaluation time: 0.0156269s
-Number of evaluated nodes: 128
-Evaluations by depth: {'5': 128}
+Evaluation time: 0.0109961s
+Number of evaluated nodes: 398
+Evaluations by depth: {'5': 398}
 Average evaluation depth: 5.0
 ARD: 5.0
 Player O under AI control plays: x = G, y = 2
 
-Move #53
+Move #51
 
-XXXO*X*O
-OOOOXXXX
-XXXOOOO*
-XX**XO.O
-OXXXOOX.
+OXXX*O*.
+OOOOXXX.
+OOOOXXO*
+XO**XOO.
+OXXOOOXX
 OOOOXX..
-OOXOXO*.
-OOXXXXO.
+XOXXXO*.
+XXXOXX..
 
-Evaluation time: 0.0s
-Number of evaluated nodes: 62
-Evaluations by depth: {'5': 62}
+Evaluation time: 0.0039961s
+Number of evaluated nodes: 186
+Evaluations by depth: {'5': 186}
 Average evaluation depth: 5.0
 ARD: 5.0
-Player X under AI control plays: x = G, y = 3
+Player X under AI control plays: x = H, y = 1
+
+Move #52
+
+OXXX*O*.
+OOOOXXXX
+OOOOXXO*
+XO**XOO.
+OXXOOOXX
+OOOOXX..
+XOXXXO*.
+XXXOXX..
+
+Evaluation time: 0.002002s
+Number of evaluated nodes: 128
+Evaluations by depth: {'5': 128}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player O under AI control plays: x = G, y = 5
+
+Move #53
+
+OXXX*O*.
+OOOOXXXX
+OOOOXXO*
+XO**XOO.
+OXXOOOXX
+OOOOXXO.
+XOXXXO*.
+XXXOXX..
+
+Evaluation time: 0.0010011s
+Number of evaluated nodes: 15
+Evaluations by depth: {'5': 15}
+Average evaluation depth: 5.0
+ARD: 5.0
+Player X under AI control plays: x = G, y = 7
 
 Move #54
 
-XXXO*X*O
+OXXX*O*.
 OOOOXXXX
-XXXOOOO*
-XX**XOXO
-OXXXOOX.
-OOOOXX..
-OOXOXO*.
-OOXXXXO.
+OOOOXXO*
+XO**XOO.
+OXXOOOXX
+OOOOXXO.
+XOXXXO*.
+XXXOXXX.
 
-Evaluation time: 0.0s
+Evaluation time: 0.000994s
 Number of evaluated nodes: 0
 Evaluations by depth: {}
 ARD: 0
-Player O under AI control plays: x = G, y = 5
+Player O under AI control plays: x = H, y = 0
 
 Move #55
 
-XXXO*X*O
+OXXX*O*O
 OOOOXXXX
-XXXOOOO*
-XX**XOXO
-OXXXOOX.
+OOOOXXO*
+XO**XOO.
+OXXOOOXX
 OOOOXXO.
-OOXOXO*.
-OOXXXXO.
+XOXXXO*.
+XXXOXXX.
 
 Evaluation time: 0.0s
 Number of evaluated nodes: 0
 Evaluations by depth: {}
 ARD: 0
-Player X under AI control plays: x = H, y = 4
+Player X under AI control plays: x = H, y = 3
 
 Move #56
 
-XXXO*X*O
+OXXX*O*O
 OOOOXXXX
-XXXOOOO*
-XX**XOXO
-OXXXOOXX
+OOOOXXO*
+XO**XOOX
+OXXOOOXX
 OOOOXXO.
-OOXOXO*.
-OOXXXXO.
+XOXXXO*.
+XXXOXXX.
 
-Evaluation time: 0.0s
+Evaluation time: 0.0010161s
 Number of evaluated nodes: 0
 Evaluations by depth: {}
 ARD: 0
@@ -1011,14 +1011,14 @@ Player O under AI control plays: x = H, y = 5
 
 Move #57
 
-XXXO*X*O
+OXXX*O*O
 OOOOXXXX
-XXXOOOO*
-XX**XOXO
-OXXXOOXX
+OOOOXXO*
+XO**XOOX
+OXXOOOXX
 OOOOXXOO
-OOXOXO*.
-OOXXXXO.
+XOXXXO*.
+XXXOXXX.
 
 Evaluation time: 0.0s
 Number of evaluated nodes: 0
@@ -1028,14 +1028,14 @@ Player X under AI control plays: x = H, y = 6
 
 Move #58
 
-XXXO*X*O
+OXXX*O*O
 OOOOXXXX
-XXXOOOO*
-XX**XOXO
-OXXXOOXX
+OOOOXXO*
+XO**XOOX
+OXXOOOXX
 OOOOXXOO
-OOXOXO*X
-OOXXXXO.
+XOXXXO*X
+XXXOXXX.
 
 Evaluation time: 0.0s
 Number of evaluated nodes: 0
@@ -1045,19 +1045,19 @@ Player O under AI control plays: x = H, y = 7
 
 Move #59
 
-XXXO*X*O
+OXXX*O*O
 OOOOXXXX
-XXXOOOO*
-XX**XOXO
-OXXXOOXX
+OOOOXXO*
+XO**XOOX
+OXXOOOXX
 OOOOXXOO
-OOXOXO*X
-OOXXXXOO
+XOXXXO*X
+XXXOXXXO
 
 It's a tie!
-Average heuristic time: 0.3847979644067796
-Number of states evaluated: 2154763
-Average average depth: 4.490803915389418
-Total number of nodes evaluated at every depth: {'5': 68923, '3': 56, '1': 36, '6': 102143, '4': 62, '2': 25, '7': 101218, '8': 101817, '9': 101356, '10': 101234, '11': 98775, '12': 97692, '13': 96248, '14': 95874, '15': 91621, '16': 92389, '17': 89358, '18': 89323, '19': 87914, '20': 88716, '21': 89770, '22': 88343, '23': 14792, '24': 80338, '25': 86681, '26': 3842, '27': 54934, '28': 1483, '29': 56728, '30': 7801, '31': 42452, '32': 5678, '33': 37548, '34': 3485, '35': 26276, '36': 3235, '37': 11687, '38': 510, '39': 7147, '40': 27, '41': 368, '42': 309, '43': 5146, '44': 46, '45': 358, '46': 1346, '47': 4420, '48': 2862, '49': 6004, '50': 2297, '51': 564, '52': 1602, '53': 843, '54': 645, '55': 226, '56': 128, '57': 62}
-Average ARD: 6.530947911007762
+Average heuristic time: 0.24705010508474576
+Number of states evaluated: 1131688
+Average average depth: 4.491344418777939
+Total number of nodes evaluated at every depth: {'5': 83135, '4': 25, '3': 23, '2': 25, '1': 34, '6': 98569, '7': 83310, '8': 3947, '9': 82407, '10': 847, '11': 82129, '12': 2398, '13': 2928, '14': 2232, '15': 58554, '16': 2165, '17': 76218, '18': 1866, '19': 75594, '20': 1819, '21': 74130, '22': 11511, '23': 42018, '24': 56476, '25': 47064, '26': 55967, '27': 64168, '28': 1088, '29': 5255, '30': 1086, '31': 6455, '32': 1122, '33': 1348, '34': 1280, '35': 3133, '36': 937, '37': 2051, '38': 528, '39': 1615, '40': 21261, '41': 384, '42': 3738, '43': 28221, '44': 10923, '45': 3861, '46': 7940, '47': 3350, '48': 7063, '49': 3145, '50': 2675, '51': 1488, '52': 1330, '53': 125, '54': 398, '55': 186, '56': 128, '57': 15}
+Average ARD: 5.842653230128948
 Total number of moves: 59

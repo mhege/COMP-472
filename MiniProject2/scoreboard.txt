@@ -1,14 +1,12 @@
-n=4 b=4 s=3 t=5.0
-
-Player 1: AI d=6 a=False e1
-Player 2: AI d=6 a=False e2
+Player 1: AI d=6 a=False
+Player 2: AI d=6 a=False
 
 10 games
 
-Total wins for e1: 10 (1.0%)
-Total wins for e2: 0 (0.0%)
+Total wins for e1: 5 (0.5%)
+Total wins for e2: 5 (0.5%)
 
-Average heuristics time: 0.14484172625
+Average heuristics time: 0.13924575624999996
 Total evaluated nodes: 1699080
 Evaluations by depth: {'5': 898560, '6': 482520, '7': 204240, '8': 86760, '9': 21600, '10': 4800, '11': 600}
 Average evaluation depth: 5.7446853591355325
@@ -17,17 +15,120 @@ Average moves per game: 8.0
 
 n=4 b=4 s=3 t=1.0
 
-Player 1: AI d=6 a=True e2
-Player 2: AI d=6 a=True e1
+Player 1: AI d=6 a=True
+Player 2: AI d=6 a=True
+
+10 games
+
+Total wins for e1: 0 (0.0%)
+Total wins for e2: 5 (1.0%)
+
+Average heuristics time: 0.010991299999999997
+Total evaluated nodes: 58385
+Evaluations by depth: {'5': 27735, '6': 27915, '7': 1150, '8': 1255, '9': 125, '10': 40, '11': 165}
+Average evaluation depth: 5.610944591932859
+ARD: 55.45452521917045
+Average moves per game: 11.5
+
+n=5 b=4 s=4 t=1.0
+
+Player 1: AI d=2 a=True
+Player 2: AI d=6 a=True
 
 10 games
 
 Total wins for e1: 0 (0.0%)
 Total wins for e2: 10 (1.0%)
 
-Average heuristics time: 0.006093681
-Total evaluated nodes: 59550
-Evaluations by depth: {'5': 13290, '6': 44320, '7': 1130, '8': 770, '9': 10, '10': 20, '11': 10}
-Average evaluation depth: 5.824349286314022
-ARD: 53.248356222286574
-Average moves per game: 10.0
+Average heuristics time: 0.002262257419354838
+Total evaluated nodes: 1380
+Evaluations by depth: {'1': 210, '2': 130, '3': 160, '4': 155, '5': 170, '6': 10, '7': 80, '8': 75, '9': 130, '10': 65, '11': 60, '12': 30, '13': 55, '14': 5, '15': 35, '16': 10}
+Average evaluation depth: 5.760869565217392
+ARD: 116.42083725481785
+Average moves per game: 15.5
+
+n=5 b=4 s=4 t=5.0
+
+Player 1: AI d=6 a=True
+Player 2: AI d=6 a=True
+
+10 games
+
+Total wins for e1: 0 (0%)
+Total wins for e2: 0 (0%)
+
+Average heuristics time: 0.03298610909090909
+Total evaluated nodes: 919925
+Evaluations by depth: {'5': 253945, '6': 132855, '7': 41065, '8': 51210, '9': 60945, '10': 56495, '11': 87195, '12': 139660, '13': 40815, '14': 19650, '15': 15015, '16': 8180, '17': 8970, '18': 2125, '19': 1525, '20': 275}
+Average evaluation depth: 8.587140255999131
+ARD: 199.4502503471702
+Average moves per game: 22.0
+
+n=8 b=5 s=5 t=1.0
+
+Player 1: AI d=2 a=True
+Player 2: AI d=6 a=True
+
+10 games
+
+Total wins for e1: 0 (0.0%)
+Total wins for e2: 10 (1.0%)
+
+Average heuristics time: 0.0039387904347826085
+Total evaluated nodes: 2335
+Evaluations by depth: {'1': 500, '2': 320, '3': 310, '4': 300, '5': 295, '6': 285, '7': 280, '8': 20, '9': 15, '10': 10}
+Average evaluation depth: 3.773019271948608
+ARD: 49.626278409929014
+Average moves per game: 11.5
+
+n=8 b=5 s=5 t=5.0
+
+Player 1: AI d=2 a=True
+Player 2: AI d=6 a=True
+
+10 games
+
+Total wins for e1: 0 (0.0%)
+Total wins for e2: 10 (1.0%)
+
+Average heuristics time: 0.0041117518518518515
+Total evaluated nodes: 3795
+Evaluations by depth: {'1': 525, '2': 515, '3': 305, '4': 300, '5': 335, '6': 275, '7': 270, '8': 265, '9': 260, '10': 255, '11': 250, '12': 240}
+Average evaluation depth: 5.67193675889328
+ARD: 76.91734132925207
+Average moves per game: 13.5
+
+n=8 b=6 s=5 t=1.0
+
+Player 1: AI d=6 a=True
+Player 2: AI d=6 a=True
+
+10 games
+
+Total wins for e1: 2 (1.0%)
+Total wins for e2: 0 (0.0%)
+
+Average heuristics time: 0.2516352098958333
+Total evaluated nodes: 11438985
+Evaluations by depth: {'5': 861703, '3': 416, '1': 314, '6': 903149, '4': 254, '2': 300, '7': 912127, '8': 423032, '9': 423435, '10': 413623, '11': 426681, '12': 43010, '13': 26278, '14': 336084, '15': 303722, '16': 332633, '17': 397855, '18': 391927, '19': 393485, '20': 168013, '21': 384751, '22': 351586, '23': 218583, '24': 587426, '25': 304386, '26': 508911, '27': 341334, '28': 161981, '29': 49864, '30': 169155, '31': 46771, '32': 167431, '33': 18064, '34': 125843, '35': 47110, '36': 120399, '37': 100081, '38': 117775, '39': 39580, '40': 155078, '41': 35101, '42': 105314, '43': 182547, '44': 72626, '45': 51896, '46': 50013, '47': 33350, '48': 41466, '49': 34732, '50': 15775, '51': 18910, '52': 10785, '53': 6032, '54': 2698, '55': 2397, '56': 879, '57': 314}
+Average evaluation depth: 18.50356014978602
+ARD: 1645.1451236359221
+Average moves per game: 57.6
+
+n=8 b=6 s=5 t=5.0
+
+Player 1: AI d=6 a=True
+Player 2: AI d=6 a=True
+
+10 games
+
+Total wins for e1: 5 (1.0%)
+Total wins for e2: 0 (0.0%)
+
+Average heuristics time: 0.36695794684684685
+Total evaluated nodes: 17144655
+Evaluations by depth: {'5': 2190906, '6': 1931896, '7': 602203, '8': 2274601, '4': 59, '9': 192080, '10': 585230, '11': 2001010, '12': 46190, '13': 1198105, '14': 354555, '15': 304495, '16': 450715, '17': 425795, '18': 57250, '19': 39210, '20': 146240, '21': 188150, '22': 509595, '23': 738350, '24': 100025, '25': 84570, '26': 69515, '27': 100250, '28': 25545, '29': 54060, '30': 299225, '31': 128585, '32': 67625, '33': 327700, '34': 100860, '35': 96535, '36': 34850, '37': 70665, '38': 90955, '39': 246925, '40': 136020, '41': 238495, '42': 110310, '43': 46390, '44': 28750, '45': 20205, '46': 34310, '47': 167580, '48': 89620, '49': 44135, '50': 39550, '51': 19185, '52': 23370, '53': 2610, '54': 3515, '55': 5550, '56': 520, '57': 15}
+Average evaluation depth: 15.007413739150774
+ARD: 1622.1970621433286
+Average moves per game: 55.5
+
