@@ -28,7 +28,7 @@ bbc-discussion and drug-discussion were written apart and are not found in the .
 
 15/11/2021
 
-MiniProject 2 - MLG Tic Tac Toe<br />
+<b>MiniProject 2</b> - MLG Tic Tac Toe<br />
 
 Students: <br />
 Marc Hegedus - 26242219<br />
