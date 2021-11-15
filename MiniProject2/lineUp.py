@@ -1268,8 +1268,16 @@ def main():
                     total_depth_dict[key] = g.total_depth_dict[key]
 
         s.write('10 games\n\n')
-        s.write(F'Total wins for e1: {wins_e1} ({round(wins_e1/(wins_e1+wins_e2), 3)}%)\n')
-        s.write(F'Total wins for e2: {wins_e2} ({round(wins_e2 / (wins_e1 + wins_e2), 3)}%)\n\n')
+
+        if wins_e1 > 0 or wins_e2 > 0:
+            e1_win_percentage = round(wins_e1/(wins_e1 + wins_e2), 3)
+            e2_win_percentage = round(wins_e2 / (wins_e1 + wins_e2), 3)
+        else:
+            e1_win_percentage = 0
+            e2_win_percentage = 0
+
+        s.write(F'Total wins for e1: {wins_e1} ({e1_win_percentage}%)\n')
+        s.write(F'Total wins for e2: {wins_e2} ({e2_win_percentage}%)\n\n')
         s.write(F'Average heuristics time: {total_time / total_turns}\n')
         s.write(F'Total evaluated nodes: {total_nodes}\n')
         s.write(F'Evaluations by depth: {total_depth_dict}\n')
