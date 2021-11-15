@@ -825,6 +825,7 @@ class Game:
             elif self.result == '.':
                 f.write("It's a tie!\n")
                 print("It's a tie!")
+                self.winning_e = -1
             self.initialize_game()
         return self.result
 

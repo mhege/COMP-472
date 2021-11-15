@@ -16,8 +16,10 @@ ARD: 55.961669818834885
 Average moves per game: 8.0
 
 n=4 b=4 s=3 t=1.0
+
 Player 1: AI d=6 a=True e2
 Player 2: AI d=6 a=True e1
+
 10 games
 
 Total wins for e1: 0 (0.0%)
