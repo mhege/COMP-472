@@ -12,6 +12,7 @@ pypy 3.7
 
 Run instructions:
 Currently setup to run 2.6 in the handout.
+
 Run program and enter information in the following order:
 board size
 number of blocs
