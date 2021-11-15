@@ -1,4 +1,4 @@
-MiniProject 2
+MiniProject 2 - MLG Tic Tac Toe
 
 Students: 
 Marc Hegedus - 26242219
