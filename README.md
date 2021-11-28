@@ -53,6 +53,19 @@ AlphaBeta or Minimax algorithm<br />
 e(1) or e(2) heuristic of both players<br />
 play mode<br />
 
+<b>MiniProject 3</b> - MLG Tic Tac Toe<br />
+
+Students: <br />
+Marc Hegedus - 26242219<br />
+Lorenzo Monge - 40045872<br />
+
+Software used:<br />
+Pycharm 2021.2.2<br />
+SourceTree 3.4.5<br />
+Python 3.8.10<br />
+
+Run instructions:<br />
+Click Run<br />
+
 Github project URL:<br />
 https://github.com/mhege/COMP-472.git
-
