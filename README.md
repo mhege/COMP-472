@@ -67,7 +67,11 @@ SourceTree 3.4.5<br />
 Python 3.8.10<br />
 
 Run instructions:<br />
-Click Run<br />
+Task 1 and Task 2 are separated in different .py files.<br />
+Task 2 has four separate scripts listed in the form Task2_X, where x is a number 1-4 indicating a separate model used.<br />
+The scripts are to be run individually.<br />
+Open Task1 or Task2_(1-4) and click run.<br />
+The <model-name>-details.csv will be made and the results will be appended to analysis.csv<br />
 
 Github project URL:<br />
 https://github.com/mhege/COMP-472.git
