@@ -9,8 +9,8 @@ if __name__ == '__main__':
     questionWord = pd.read_csv('synonyms.csv')
 
     # load word embedding model
-    modelName = 'word2vec-google-news-300'
-    googleNews = api.load(modelName)
+    modelName = 'glove-wiki-gigaword-100'
+    wiki_100 = api.load(modelName)
 
     # seed random number generator
     seed(1)
@@ -21,7 +21,7 @@ if __name__ == '__main__':
     # answered without guessing
     nGuess = 0
 
-    with open('word2vec-google-news-300-details.csv', 'w', newline='') as csvfile:
+    with open('glove-wiki-gigaword-100-details.csv', 'w', newline='') as csvfile:
 
         for i in range(len(questionWord)):
 
@@ -43,9 +43,9 @@ if __name__ == '__main__':
             # words
             words = [(questionWord.T)[i][2], (questionWord.T)[i][3], (questionWord.T)[i][4], (questionWord.T)[i][5]]
 
-            if (question[0] not in googleNews.index_to_key) \
-                    or (words[0] not in googleNews.index_to_key and words[1] not in googleNews.index_to_key
-                        and words[2] not in googleNews.index_to_key and words[3] not in googleNews.index_to_key):
+            if (question[0] not in wiki_100.index_to_key) \
+                    or (words[0] not in wiki_100.index_to_key and words[1] not in wiki_100.index_to_key
+                        and words[2] not in wiki_100.index_to_key and words[3] not in wiki_100.index_to_key):
 
                 # random guess
                 guess = words[randint(0, 3)]
@@ -69,10 +69,10 @@ if __name__ == '__main__':
                 # Similarities
                 sims = []
                 for j in range(len(words)):
-                    if words[j] not in googleNews.index_to_key:
+                    if words[j] not in wiki_100.index_to_key:
                         sims.append(0.0)
                     else:
-                        sims.append(googleNews.similarity(question, words[j])[0])
+                        sims.append(wiki_100.similarity(question, words[j])[0])
 
                 # Find most similar word
                 maxVal = max(sims)
@@ -102,9 +102,9 @@ if __name__ == '__main__':
 
         csvfile.close()
 
-    with open('analysis.csv', 'w', newline='') as csvfile:
+    with open('analysis.csv', 'a') as csvfile:
 
-        csvfile.write(modelName + ',' + str(len(googleNews)) + ',' + str(cLabel) + ','
+        csvfile.write(modelName + ',' + str(len(wiki_100)) + ',' + str(cLabel) + ','
                       + str(len(questionWord) - nGuess) + ','
                       + str(cLabel / (len(questionWord) - nGuess)) + '\n')
 
