@@ -1,6 +1,5 @@
 # COMP-472
 Fall 2021
-
 https://github.com/mhege
 
 Github project URL:<br />
