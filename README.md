@@ -53,8 +53,8 @@ AlphaBeta or Minimax algorithm<br />
 e(1) or e(2) heuristic of both players<br />
 play mode<br />
 
-Revision needed:
-Recursive depth
+Revision needed:<br />
+Recursive depth<br />
 
 13/12/2021
 
