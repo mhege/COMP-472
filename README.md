@@ -53,6 +53,9 @@ AlphaBeta or Minimax algorithm<br />
 e(1) or e(2) heuristic of both players<br />
 play mode<br />
 
+Revision needed:
+Recursive depth
+
 13/12/2021
 
 <b>MiniProject 3</b> - MLG Tic Tac Toe<br />
